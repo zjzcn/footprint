@@ -1,0 +1,42 @@
+<div ng-controller="PersonSettingCtrl" ng-init="init()">
+	<div class="portlet-title page-content-title">
+	    <div class="caption">
+			<span class="caption-subject uppercase">
+				系统负责人列表
+			</span>
+	    </div>
+	    <div class="actions">
+	        <button class="btn btn-success" ng-click="add()"><i class="fa fa-plus"></i>添加</button>
+	    </div>
+	</div>
+	<div class="titleline"></div>
+	<div class="portlet-body">
+	    <table class="table" id="AlarmTable">
+	        <thead class="thead-bg">
+	            <tr>
+	                <th>姓名</th>
+	                <th>电话</th>
+	                <th>邮件地址</th>
+                    <th style="width: 170px;">是否接收告警</th>
+	                <th style="width: 170px;">操作</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+                <tr ng-repeat="person in personList" ng-click="selectItem(person)" ng-class="{true:'info'}[person.checked]">
+                    <td>{{person.name}}</td>
+                    <td>{{person.tel}}</td>
+                    <td>{{person.mail}}</td>
+                    <td>
+                        <input class="switch" type="checkbox" data-on-text="是" data-off-text="否" data-on-color="info" data-size="small">
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" ng-click="modify(person)"><i class="fa fa-edit"></i> 修改</button>
+                        <button class="btn btn-warning btn-sm" ng-click="del(person)"><i class="fa fa-remove"></i> 删除</button>
+                    </td>
+                </tr>
+	        </tbody>
+	    </table>
+        <sn-pager style="float: right" ng-show="isShowPageIndex()" items-per-page="pageSize" total-items="totalCount" list-size="10"></sn-pager>
+	    <div class="clearfix"></div>
+    </div>
+</div>

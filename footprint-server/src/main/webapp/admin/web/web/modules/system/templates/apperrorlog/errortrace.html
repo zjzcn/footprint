@@ -1,0 +1,139 @@
+<div class="mg-top-20">
+    <div class="page-content">
+        <div class="portlet tasks-widget page-content-wrap">
+            <div class="portlet-body" ng-controller="ErrorTraceCtrl">
+                <div class="row"></br>
+                    <div class="col-md-8 col-sm-8">
+                        <ul style="list-style-type: none">
+                            <li>异常调用：SpringController/split.do (GET)</li>
+                            <li>所属应用：java01</li>
+                            <li>时间戳：2015-09-08 10:47:07</li>
+                            <li>所属host：192.168.0.1:fserver01:8080</li>
+                            <li>响应时间：859ms[now]   124[avg]   3548[max]</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 col-sm-4" style="font-size: 16px; color: #158f76">
+                        <a><i class="fa fa-hand-o-left"></i></a>  共有N条追踪信息
+                        <a><i class="fa fa-hand-o-right"></i></a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="tabbable-custom">
+                        <ul class="nav nav-tabs ">
+                            <li class="active"  href="#trace_brief" data-toggle="tab">
+                                <a>
+                                    摘要
+                                </a>
+                            </li>
+                            <li href="#trace_detail" data-toggle="tab">
+                                <a>
+                                    追踪详情
+                                </a>
+                            </li>
+                            <li href="#trace_sql" data-toggle="tab">
+                                <a>
+                                    相关SQL
+                                </a>
+                            </li>
+                            <li href="#trace_para" data-toggle="tab">
+                                <a>
+                                    请求参数
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="trace_brief" class="tab-pane active">
+                                <div style="width: 100%; height: 150px" echarts="data1"></div>
+                                <p style="font-size: 16px">最慢组件</p>
+                                <table class="table table-striped table-bordered table-hover datatable" id="">
+                                    <thead>
+                                    <tr>
+                                        <th>名称</th>
+                                        <th>调用次数</th>
+                                        <th>执行时间（ms）</th>
+                                        <th>时间百分比</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>aaa</td>
+                                        <td>1</td>
+                                        <td>37,196.00</td>
+                                        <td>100.00%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>bbb</td>
+                                        <td>1</td>
+                                        <td>2.00</td>
+                                        <td>0.00%</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="trace_detail" class="tab-pane">
+                                <!--内容待定                               <div id="nestable_list_menu">
+                                                                   <input type="button" class="btn btn-success" data-action="expand-all" value="展开所有"/>
+                                                                   <input type="button" class="btn btn-default" data-action="collapse-all" value="收起所有"/>
+                                                               </div>
+                                                               <table class="table" id="ErrortraceTable">
+                                                                   <thead class="thead-bg">
+                                                                   <tr>
+                                                                       <th>分类</th>
+                                                                       <th>持续时间(ms)</th>
+                                                                       <th>时间占比(%)</th>
+                                                                       <th>时间偏移量(ms)</th>
+                                                                   </tr>
+                                                                   </thead>
+                                                                   <tbody>
+                                                                   </tbody>
+                                                               </table>-->
+
+                                <img src="images/temp/tracedetail.png" />
+                            </div>
+                            <div id="trace_sql" class="tab-pane">
+                                <table class="table table-striped table-bordered table-hover datatable" id="">
+                                    <thead>
+                                    <tr>
+                                        <th>SQL操作</th>
+                                        <th>调用次数</th>
+                                        <th>总耗时（s）</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>aaa</td>
+                                        <td>1</td>
+                                        <td>0.001</td>
+                                    </tr>
+                                    <tr>
+                                        <td>bbb</td>
+                                        <td>1</td>
+                                        <td>0.001</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="trace_para" class="tab-pane">
+                                <p style="font-size: 16px">请求参数</p>
+                                <ul style="list-style-type: none">
+                                    <li>httpResponseCode：200</li>
+                                    <li>jvm.thread_name：http-nio-8080-exec-32929</li>
+                                </ul>
+                                <p style="font-size: 16px">自定义参数</p>
+                                <ul style="list-style-type: none">
+                                    <li> request.parameters.type：2</li>
+                                </ul>
+                                <p style="font-size: 16px">请求信息</p>
+                                <ul style="list-style-type: none">
+                                    <li>请求URL：/java_demo/weather/plan.json</li>
+                                    <li>HTTP响应：200</li>
+                                    <li>referer：</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

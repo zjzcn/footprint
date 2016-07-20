@@ -1,0 +1,113 @@
+<div class="mg-top-20" ng-controller="AgentDownloadCtrl">
+    <div class="page-content">
+        <div class="portlet tasks-widget page-content-wrap">
+            <div class="portlet-title page-content-title">
+                <div class="caption">
+            		<span class="caption-subject">
+            			下载探针并安装
+            		</span>
+                </div>
+            </div>
+            <div class="titleline"></div>
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-7 col-sm-7">
+                        <div class="tab-container" id="tab-side-container">
+                            <ul class="">
+                                <li class="active">
+                                    <a href="javascript:;" data-target="#tab_1" data-toggle="tab">Java</a>
+                                </li>
+                                <!--<li class="">
+                                    <a href="javascript:;" data-target="#tab_2" data-toggle="tab">PHP</a>
+                                </li>
+                                <li class="">
+                                    <a href="javascript:;" data-target="#tab_3" data-toggle="tab">.Net</a>
+                                </li>
+                                <li class="">
+                                    <a href="javascript:;" data-target="#tab_4" data-toggle="tab">nodeJs</a>
+                                </li>
+                                <li class="">
+                                    <a href="javascript:;" data-target="#tab_5" data-toggle="tab">python</a>
+                                </li>-->
+                            </ul>
+                            <div class="panel-container tab-content" style="">
+                                <div id="tab_1" class="tab-pane active">
+                                    <h4>正式版</h4>
+                                    <div class="row mb-40">
+                                        <div class="col-md-offset-1 col-md-8">
+                                            <div class="download-link">
+                                                <a href="" ng-click="download()">
+                                                    <div class="download-content">
+                                                        <p>版本：<span class="sdk_current_version">{{version}}</span></p>
+                                                        <p>日期：<span class="sdk_current_date">{{modifyTime}}</span></p>
+                                                        <p>大小：<span class="sdk_current_size">{{size}}</span><!-- <span class="sdk_current_unit">MB</span>--></p>
+                                                    </div>
+                                                    <div class="download-icon">
+                                                        <i class="fa fa-download"></i>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h4>升级日志</h4>
+                                    <div class="row">
+                                        <div class="col-md-offset-1 col-md-8">
+                                            <div class="download-log">
+                                                <ul ng-repeat="log in agentHistoryList">
+                                                    <li>
+                                                        <p>{{log.modifyTime}}  &nbsp;   Version:{{log.version}}</p>
+                                                        <ul>
+                                                            <li>{{log.content}}</li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<div id="tab_2" class="tab-pane">
+                                   PHP
+                                </div>
+                                <div id="tab_3" class="tab-pane">
+                                    .Net
+                                </div>
+                                <div id="tab_4" class="tab-pane">
+                                    nodeJs
+                                </div>
+                                <div id="tab_5" class="tab-pane">
+                                    python
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 col-sm-5">
+                        <div class="explain">
+                            <h4 style="font-weight: bolder">安装步骤指导</h4>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h4>一、手动安装</h4>
+                                    <p>1)解压缩安装文件包到你的应用服务器的根目录(推荐)或指定目录</p>
+                                    <p>2)备份xxx目录下xxx.properties文件</p>
+                                    <p>3)在应用服务器的启动脚本中增加：</p>
+                                    <div class="createapp_copybox">
+                                        改！！-javaagent:/path/to/xxx/xxx-agent-java.jar
+                                    </div>
+                                    <i class="fa fa-copy"></i>
+                                </div>
+                                <div class="col-sm-12">
+                                    <p class="attention">注：“/path/to/”是示例路径，请用户根据自身不同的环境修改正确的目录。</p>
+                                    <h4>二、启动或者重新启动应用服务器</h4>
+                                    <p>1)应用服务器重新启动，云迹server探针监控才能生效。</p>
+                                    <p>2)5分钟后，当您的java应用服务有http请求进入，性能数据将发送到云迹Server</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,136 @@
+<div class="portlet-body" ng-controller="OverviewDashboardCtrl">
+    <!-- <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <div class="portlet light echart">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="fa fa-question-circle" tool-tip tool-text="从收到请求到返回响应的时间"></i><span>总体响应时间</span>
+                    </div>
+                    <div class="actions">
+                        <a href="javascript:;" class="btn btn-circle btn-icon-only btn-default dashboardBtn" tool-tip tool-type="remove" ng-click="delDashboard()">
+                            <i class="fa fa-minus"></i>
+                        </a>
+                        <a class="btn btn-circle btn-icon-only btn-default fullscreen" tool-tip tool-type="fullScreen"> </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="charts" echarts="data1"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <div class="portlet light echart">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="fa fa-question-circle" tool-tip tool-text="应用过程的吞吐率，即每分钟请求数"></i><span>吞吐率</span>
+                    </div>
+                    <div class="actions">
+                        <a href="javascript:;" class="btn btn-circle btn-icon-only btn-default dashboardBtn" tool-tip tool-type="remove" ng-click="delDashboard()">
+                            <i class="fa fa-minus"></i>
+                        </a>
+                        <a class="btn btn-circle btn-icon-only btn-default fullscreen" tool-tip tool-type="fullScreen"> </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="charts" echarts="data2"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <div class="portlet light echart">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="fa fa-question-circle" tool-tip tool-text="应用服务器端每分钟发生的错误或异常数量占总请求数量的百分比"></i><span>错误率</span>
+                    </div>
+                    <div class="actions">
+                        <a href="javascript:;" class="btn btn-circle btn-icon-only btn-default dashboardBtn" tool-tip tool-type="remove" ng-click="delDashboard()">
+                            <i class="fa fa-minus"></i>
+                        </a>
+                        <a class="btn btn-circle btn-icon-only btn-default fullscreen" tool-tip tool-type="fullScreen"> </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="charts" echarts="data3"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <div class="portlet light echart">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="fa fa-question-circle" tool-tip tool-text="服务器端最耗时的前5个Web请求过程，最耗时的依据是服务器端的响应总时间和"></i><span>最耗时web请求过程</span>
+                    </div>
+                    <div class="actions">
+                        <a href="javascript:;" class="btn btn-circle btn-icon-only btn-default dashboardBtn" tool-tip tool-type="remove" ng-click="delDashboard()">
+                            <i class="fa fa-minus"></i>
+                        </a>
+                        <a class="btn btn-circle btn-icon-only btn-default fullscreen" tool-tip tool-type="fullScreen"> </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="charts" echarts="data1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <div class="portlet light echart">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="fa fa-question-circle" tool-tip tool-text="展示CPU"></i><span>CPU</span>
+                    </div>
+                    <div class="actions">
+                        <a href="javascript:;" class="btn btn-circle btn-icon-only btn-default dashboardBtn" tool-tip tool-type="remove" ng-click="delDashboard()">
+                            <i class="fa fa-minus"></i>
+                        </a>
+                        <a class="btn btn-circle btn-icon-only btn-default fullscreen" tool-tip tool-type="fullScreen"> </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="charts" echarts="data5"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <div class="portlet light echart">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="fa fa-question-circle" tool-tip tool-text="展示物理内存"></i><span>物理内存</span>
+                    </div>
+                    <div class="actions">
+                        <a href="javascript:;" class="btn btn-circle btn-icon-only btn-default dashboardBtn" tool-tip tool-type="remove" ng-click="delDashboard()">
+                            <i class="fa fa-minus"></i>
+                        </a>
+                        <a class="btn btn-circle btn-icon-only btn-default fullscreen" tool-tip tool-type="fullScreen"> </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="charts" echarts="data6"></div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="row">
+        <div class="col-md-6 col-sm-6" ng-repeat="chart in charts">
+            <div class="portlet light echart">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="fa fa-question-circle" tool-tip tool-text="{{chart.tip}}"></i><span>{{chart.title}}</span>
+                    </div>
+                    <div class="actions">
+                        <a href="javascript:;" class="btn btn-circle btn-icon-only btn-default dashboardBtn" tool-tip tool-type="remove">
+                            <i class="fa fa-minus"></i>
+                        </a>
+                        <a class="btn btn-circle btn-icon-only btn-default fullscreen" tool-tip tool-type="fullScreen"> </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="charts" echarts="chart.data"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,94 @@
+<div class="portlet-body" ng-controller="AppenvCtrl">
+    <div class="select-refresh-title">
+        <div class="title-left">
+            <select class="chosen-select" id="appKeySelect" system-select on-change="appKeyChange()">
+            </select>
+        </div>
+    </div>
+    </br>
+    <!-- BEGIN ROW-->
+    <div class="row">
+        <!-- BEGIN PAGE CONTENT INNER LEFT-->
+        <div class="col-md-4 col-sm-12">
+            <table class="table" id="AppEnvTable">
+                <thead class="thead-bg">
+                <tr>
+                    <th>节点名称</th>
+                    <th>Agent版本</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="agent in agents" ng-click="selectItem(agent)" ng-class="{true:'info'}[agent.checked]">
+                    <td>{{agent.agentName}}</td>
+                    <td>{{agent.version}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- BEGIN PAGE CONTENT INNER LEFT-->
+
+        <!-- BEGIN PAGE CONTENT INNER RIGHT-->
+        <div class="col-md-8 col-sm-12 scoller">
+                        <!-- BEGIN DATA TABLES-->
+            <table id="appenv_Table" class="table" cellspacing="0" width="100%">
+                <thead class="thead-bg">
+                    <tr>
+                        <th>配置项</th>
+                        <th>参数</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>arch</th>
+                        <td>{{detail.arch}}</td>
+                    </tr>
+                    <tr>
+                        <th>availableProcessors</th>
+                        <td>{{detail.availableProcessors}}</td>
+                    </tr>
+                    <tr>
+                        <th>inputArguments</th>
+                        <td>{{detail.inputArguments}}</td>
+                    </tr>
+                    <tr>
+                        <th>javaHome</th>
+                        <td>{{detail.javaHome}}</td>
+                    </tr>
+                    <tr>
+                        <th>javaLibraryPath</th>
+                        <td>{{detail.javaLibraryPath}}</td>
+                    </tr>
+                    <tr>
+                        <th>javaSpecificationVersion</th>
+                        <td>{{detail.javaSpecificationVersion}}</td>
+                    </tr>
+                    <tr>
+                        <th>javaVersion</th>
+                        <td>{{detail.javaVersion}}</td>
+                    </tr>
+                    <tr>
+                        <th>jvm</th>
+                        <td>{{detail.jvm}}</td>
+                    </tr>
+                    <tr>
+                        <th>osName</th>
+                        <td>{{detail.osName}}</td>
+                    </tr>
+                    <tr>
+                        <th>osVersion</th>
+                        <td>{{detail.osVersion}}</td>
+                    </tr>
+                    <tr>
+                        <th>pid</th>
+                        <td>{{detail.pid}}</td>
+                    </tr>
+                    <tr>
+                        <th>startTime</th>
+                        <td>{{detail.startTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                        <!-- END   DATA TABLES-->
+        </div>
+    </div>
+</div>

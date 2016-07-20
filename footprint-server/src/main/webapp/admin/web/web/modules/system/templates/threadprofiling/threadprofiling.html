@@ -1,0 +1,91 @@
+<div class="portlet-body" ng-controller="ThreadProfilingCtrl" ng-init="init()">
+    <div class="select-refresh-title">
+        <div class="title-left">
+            <select class="chosen-select" id="appKeySelect" system-select on-change="appKeyChange()">
+            </select>
+        </div>
+        <div class="title-right">
+            <div class="">
+                <div class="pull-right" id="dateRangePicker" date-range-picker on-change="dateRangeChange()">
+                </div>
+            </div>
+        </div>
+    </div></br>
+    <div class="row">
+<!--        <div class="col-md-4 col-sm-12">
+            <div class="explain">
+                <h4>开始线程剖析</h4>
+                <div class="content">
+                    <h5>选择剖析的时间（<span id="selectTime">2</span>分钟）：</h5>
+                    <input id="range_5" type="text" name="range_5" value=""/>
+                </div>
+                <div class="content">
+                    <h5>选择实例：</h5>
+                    <ul style="list-style: none">
+                        <li>
+                            <label class="radio-inline">
+                                <input type="radio" name="target" value="target01" ng-model="formData.target" checked="true">192.168.0.1:server01:8080
+                            </label>
+                        </li>
+                        <li>
+                            <label class="radio-inline">
+                                <input type="radio" name="target" value="target02" ng-model="formData.target" >192.168.0.1:server02:8180
+                            </label>
+                        </li>
+                        <li>
+                            <label class="radio-inline">
+                                <input type="radio" name="target" value="target03" ng-model="formData.target" >192.168.0.2:server01:8080
+                            </label>
+                        </li>
+                        <li>
+                            <label class="radio-inline">
+                                <input type="radio" name="target" value="target04" ng-model="formData.target" >192.168.0.2:server02:8180
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <button class="btn btn-success pull-right">开始线程剖析</button>
+                <div class="clearfix"></div>
+            </div>
+
+        </div>-->
+
+        <div class="col-md-12 col-sm-12">
+<!--            <h4 class="sub-title">线程剖析记录</h4>-->
+            <div class="portlet-title page-content-title">
+                <div class="caption">
+                    <span class="caption-subject uppercase">
+                        线程剖析记录
+                    </span>
+                </div>
+                <div class="actions">
+                    <form id="upload" runat="server" method="post" enctype="multipart/form-data">
+                        <input type="file" class="btn btn-success" />
+                    </form>
+                    <!--<input type="button" class="btn btn-success" value="上传文件进行分析">-->
+                </div>
+            </div>
+            <div class="titleline"></div>
+             <table class="table" id="ThreadTable">
+                <thead class="thead-bg">
+                    <tr>
+                        <th>时间</th>
+                        <th>所属实例</th>
+                        <th>采集方式</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="agent in agents" ng-click="selectItem(agent)">
+                        <td>{{agent.agentTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                        <td>{{agent.agentName}}</td>
+                        <td>系统采集</td>
+                        <td><a target="_blank" ui-sref="ProfileResult(agent)" target="_blank">查看详情</a> </td>
+                    </tr>
+                </tbody>
+            </table>
+            <sn-pager style="float: right" ng-show="isShowPageIndex()" items-per-page="pageSize" total-items="totalCount" list-size="10"></sn-pager>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

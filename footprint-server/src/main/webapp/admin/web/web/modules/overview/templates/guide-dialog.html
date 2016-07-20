@@ -1,0 +1,35 @@
+<div class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content" ng-controller="GuideDialogCtrl">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">安装指导</h4>
+            </div>
+            <div class="modal-body">
+                <h4>LicenceKey:{{license_Key}}</h4>
+                <h4 class="attention">！重要提示：请复制该LicenceKey，按下述步骤进行安装</h4>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>一、手动安装</h4>
+                        <p>1)解压缩安装文件包到你的应用服务器的根目录(推荐)或指定目录</p>
+                        <p>2)备份xxx目录下xxx.properties文件</p>
+                        <p>3)在应用服务器的启动脚本中增加：</p>
+                        <div class="createapp_copybox">
+                            改！！-javaagent:/path/to/xxx/xxx-agent-java.jar
+                        </div>
+                        <i class="fa fa-copy"></i>
+                    </div>
+                    <div class="col-sm-12">
+                        <p class="attention">注：“/path/to/”是示例路径，请用户根据自身不同的环境修改正确的目录。</p>
+                        <h4>二、启动或者重新启动应用服务器</h4>
+                        <p>1)应用服务器重新启动，云迹server探针监控才能生效。</p>
+                        <p>2)5分钟后，当您的java应用服务有http请求进入，性能数据将发送到云迹Server</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-flat" ng-click="ok()">前往下载</button>
+            </div>
+        </div>
+    </div>
+</div>

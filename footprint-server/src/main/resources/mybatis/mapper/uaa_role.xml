@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.footprint.server.platform.uaa.dao.RoleDao">
+
+	<insert id="insert" parameterType="com.footprint.server.platform.uaa.entity.Role">
+        <![CDATA[
+             insert into 
+             uaa_role(name,super_admin,description) 
+             values(#{name},#{superAdmin},#{description})
+    	   ]]>
+	</insert>
+	
+    <update id="update" parameterType="com.footprint.server.platform.uaa.entity.Role">
+        <![CDATA[
+             update uaa_role 
+             set name=#{name},super_admin=#{superAdmin},description=#{description}
+             where id=#{id}
+    	   ]]>
+    </update>
+    
+	<select id="getById" resultType="com.footprint.server.platform.uaa.entity.Role">
+		<![CDATA[
+            select * from uaa_role
+			where id=#{id}
+    	   ]]>
+	</select>
+	
+	<select id="queryListByUserId" resultType="com.footprint.server.platform.uaa.entity.Role">
+		<![CDATA[
+            select * from uaa_role
+			where user_id=#{userId}
+    	   ]]>
+	</select>
+	
+	<select id="queryPermListByRoleId" resultType="string">
+		<![CDATA[
+            select * from uaa_role_perm_rel
+			where role_id=#{roleId}
+    	   ]]>
+	</select>
+</mapper>

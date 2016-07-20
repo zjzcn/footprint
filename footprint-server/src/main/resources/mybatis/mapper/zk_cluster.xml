@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.footprint.server.monitor.zookeeper.dao.ZkClusterDao">
+	<insert id="insert" parameterType="com.footprint.server.monitor.zookeeper.entity.ZkCluster">
+	<selectKey resultType="long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID() AS id
+    </selectKey>
+	<![CDATA[
+		insert into zk_cluster(cluster_name,server_list_json,description,enabled) 
+		values (#{clusterName},#{serverListJson},#{description},#{enabled})
+	]]>
+	</insert>
+
+	<update id="update" parameterType="com.footprint.server.monitor.zookeeper.entity.ZkCluster">
+	<![CDATA[
+		update zk_cluster 
+		set cluster_name=#{clusterName}, server_list_json=#{serverListJson}, description=#{description},enabled=#{enabled}
+		where id=#{id}
+	]]>
+	</update>
+   
+    <update id="delete">
+		update zk_cluster 
+		set enabled=1
+		where id=#{id}
+	</update>
+
+	<select id="getZkCluster" parameterType="long" resultType="com.footprint.server.monitor.zookeeper.entity.ZkCluster">
+		<![CDATA[
+             select * from zk_cluster where id=#{id}
+    	   ]]>
+	</select>
+
+	<select id="queryAll" resultType="com.footprint.server.monitor.zookeeper.entity.ZkCluster">
+		<![CDATA[
+             select * from zk_cluster where enabled=1
+    	   ]]>
+	</select>
+
+</mapper>

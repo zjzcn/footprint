@@ -1,0 +1,26 @@
+<div class="page-sidebar-wrapper" ng-controller="OverViewSideMenuCtrl">
+    <section class="sidebar">
+        <div class="page-sidebar navbar-collapse collapse">
+            <ul class="page-sidebar-menu hidden-sm hidden-xs" data-auto-scroll="true" data-slide-speed="200">
+                <li class="start" ng-repeat="menu1 in menus"
+                    ng-class="{true:'active open'}[isMenuSelected(menu1)]">
+                    <a href="javascript:void(0)" ng-click="selectMenu1(menu1)">
+                        <i ng-class="menu1.icon"></i>
+                        <span class="title">{{menu1.name}}</span>
+                        <i ng-show="menu1.children" class="fa fa-angle-left pull-right" 
+                           ng-class="{true:'fa-angle-down'}[isMenuSelected(menu1)]"></i>
+                    </a>    
+                    <ul class="sub-menu">
+                        <li ng-repeat="menu2 in menu1.children"
+                            ng-class="{true:'active'}[isMenuSelected(menu2)]">
+                            <a href="javascript:void(0)" ng-click="selectMenu2(menu2)">
+                                <i ng-class="menu2.icon"></i>
+                                {{menu2.name}}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>

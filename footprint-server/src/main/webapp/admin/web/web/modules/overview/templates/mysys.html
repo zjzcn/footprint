@@ -1,0 +1,486 @@
+<div class="portlet-body" ng-controller="OverviewMainController" ng-init="init()">
+    <div class="portlet-title page-content-title">
+    <div class="caption">
+        <i class="icon-share hide"></i>
+        <span class="caption-subject uppercase">
+            系统一览<small>（最近30分钟）</small>
+        </span>
+    </div>
+    <div class="actions">
+        <button class="btn btn-success" ng-click="create()">
+            <i class="fa fa-plus"></i>创建系统
+        </button>
+    </div>
+    </div>
+    <div class="titleline"></div>
+    <table class="table table-edit sysTable dataTable" id="SysTable">
+        <thead class="thead-bg">
+            <tr>
+                <th class="text-center" style="width: 14px;"></th>
+                <th class="text-center" style="width: 80px;">系统状态</th>
+                <th>系统名称</th>
+                <th style="width: 150px;">响应时间(s)</th>
+                <th style="width: 150px;">吞吐率(rps)</th>
+                <th style="width: 150px;">错误率(%)</th>
+                <th class="text-center" style="width: 150px;">操作</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="item in sysList">
+            <tr ng-class="{true:'odd'}[$odd]">
+                <td class="table-arrow text-center">
+                    <span class="row-details" ng-click="selectArrow(item)">
+                        <i class="fa fa-angle-right" ng-class="{true:'fa-angle-down'}[isSelected(item)]"></i>
+                    </span>
+                </td>
+                <td class="text-center">
+                    <span class="label label-xs label-success" title="正常" ng-if="item.appStatus == 'ON'">
+                        <i class="fa fa-info"></i>
+                    </span>
+                    <span class="label label-xs label-default" title="暂无数据" ng-if="item.appStatus == 'OFF'">
+                        <i class="fa fa-info"></i>
+                    </span>
+                </td>
+                <td>
+                    <a href="javascript:;" sys-tool-tip key="item.licenseKey" user="item.userName" create-time="item.createTime" ng-click="goTopology(item)">
+                        {{item.appName}}
+                    </a>
+                </td>
+                <td>{{item.responseTime}}</td>
+                <td>{{item.rpm}}</td>
+                <td>{{item.errorRate}}</td>
+                <td class=" table-tool">
+                    <a href="javascript:;" class="text-primary" ng-click="modify(item)"><i class="fa fa-pencil"></i></a>
+                    <a href="javascript:;" class="text-warning" ng-click="disabled(item)"><i class="fa fa-eye-slash"></i></a>
+                </td>
+            </tr>
+            <tr ng-repeat="sub in item.agentShowList" class="details" ng-show="isSelected(item)">
+                <td></td>
+                <td></td>
+                <td>{{sub.agentName}}</td>
+                <td>{{sub.responseTime}}</td>
+                <td>{{sub.rpm}}</td>
+                <td>{{sub.errorRate}}</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <sn-pager style="float: right" ng-show="isShowPageIndex()" items-per-page="pageSize" total-items="totalDataCount" list-size="10"></sn-pager>
+    <div class="clearfix"></div>
+
+    <div class="portlet-title page-content-title">
+        <div class="actions" style="float: right">
+            <input type="button" class="btn btn-success" ng-click="showTable =!showTable"
+              ng-value="{true:'关闭隐藏的系统',false:'展示隐藏的系统'}[showTable]">
+        </div>
+    </div>
+    <div class="visible-table" ng-show="showTable">
+        <div slim-scroll style="height: 200px;">
+            <table class="table table-edit" id="HideTable">
+                <tbody>
+                    <tr ng-repeat="item in unvisibleSys">
+                        <td>{{item.appName}}</td>
+                        <td class="table-tool">
+                            <a href="javascript:;" class="text-primary pull-right" ng-click="showSys(item)">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                            <a href="javascript:;" class="text-warning pull-right" ng-click="remove(item)">
+                                <i class="fa fa-trash-o"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="portlet-title page-content-title">
+        <div class="caption">
+            <span class="caption-subject uppercase">
+                最近事件一览<small>（最近一周）</small>
+            </span>
+        </div>
+    </div>
+    <div class="titleline"></div>
+    <div class="tabbable-custom">
+    <ul class="nav nav-tabs ">
+        <li class="active" href="#tab_1" data-toggle="tab" aria-expanded="true">
+            <a ng-if="(count_today1 + count_yesterday1 + count_early1)">
+                所有（{{count_today1 + count_yesterday1 + count_early1}}）
+            </a>
+            <a ng-if="!(count_today1 + count_yesterday1 + count_early1)">所有（0）</a>
+        </li>
+        <li class="" href="#tab_2" data-toggle="tab" aria-expanded="true">
+            <a ng-if="(count_today2 + count_yesterday2 + count_early2)">
+                警告（{{count_today2 + count_yesterday2 + count_early2}}）
+            </a>
+            <a ng-if="!(count_today2 + count_yesterday2 + count_early2)">警告（0）</a>
+        </li>
+        <li class="" href="#tab_3" data-toggle="tab" aria-expanded="true">
+            <a ng-if="(count_today3 + count_yesterday3 + count_early3)">
+                严重（{{count_today3 + count_yesterday3 + count_early3}}）
+            </a>
+            <a ng-if="!(count_today3 + count_yesterday3 + count_early3)">严重（0）</a>
+        </li>
+        <li class="" href="#tab_4" data-toggle="tab" aria-expanded="true">
+            <a ng-if="(count_today4 + count_yesterday4 + count_early4)">
+                配置（{{count_today4 + count_yesterday4 + count_early4}}）
+            </a>
+            <a ng-if="!(count_today4 + count_yesterday4 + count_early4)">配置（0）</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="All_EventsTable">
+        <div class="tab-pane active" id="tab_1">
+            <div class="scroller" slim-scroll style="height: 290px;" data-always-visible="1" data-rail-visible="0">
+                <ul class="feeds">
+                    <li class="parent" id="today1"><i class="fa fa-angle-double-down"></i> 今天</li>
+                    <li class="child_today1" ng-repeat="event in todayAll">
+                        <div class="col1">
+                            <div class="cont">
+                                <div class="cont-col1">
+                                    <div class="label label-xs label-warning" ng-if="event.eventType == 'warning'">
+                                        <i class="fa fa-warning"></i>
+                                    </div>
+                                    <div class="label label-xs label-danger" ng-if="event.eventType == 'fatal'">
+                                        <i class="fa fa-flash"></i>
+                                    </div>
+                                    <div class="label label-xs label-success" ng-if="event.eventType == 'compound'">
+                                        <i class="fa fa-cogs"></i>
+                                    </div>
+                                </div>
+                                <div class="cont-col2">
+                                    <div class="desc">
+                                        {{event.eventTitle}}
+                                        <span ng-if="event.eventStatus == '0'"><a href="javascript:;" class="text-danger" ng-click="remark(event)">【未标注】</a> </span>
+                                        <span ng-if="event.eventStatus == '1'"><a href="javascript:;" class="text-success" ng-click="remark(event)">【已标注】</a> </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col2">
+                            <div class="date">
+                                {{event.createTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="parent" id="loadMoreT">
+                        <div style="width: 10% ;float: right">
+                            <span><a href="javascript:;"><i class="fa fa-plus"></i>加载更多</a> </span>
+                        </div>
+                    </li>
+                    <li class="parent" id="yesterday1"><i class="fa fa-angle-double-down"></i> 昨天</li>
+                    <li class="child_yesterday1" ng-repeat="event in yesterdayAll">
+                        <div class="col1">
+                            <div class="cont">
+                                <div class="cont-col1">
+                                    <div class="label label-xs label-warning" ng-if="event.eventType == 'warning'">
+                                        <i class="fa fa-warning"></i>
+                                    </div>
+                                    <div class="label label-xs label-danger" ng-if="event.eventType == 'fatal'">
+                                        <i class="fa fa-flash"></i>
+                                    </div>
+                                    <div class="label label-xs label-success" ng-if="event.eventType == 'compound'">
+                                        <i class="fa fa-cogs"></i>
+                                    </div>
+                                </div>
+                                <div class="cont-col2">
+                                    <div class="desc">
+                                        {{event.eventTitle}}
+                                        <span ng-if="event.eventStatus == '0'"><a href="javascript:;" class="text-danger" ng-click="remark(event)">【未标注】</a> </span>
+                                        <span ng-if="event.eventStatus == '1'"><a href="javascript:;" class="text-success" ng-click="remark(event)">【已标注】</a> </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col2">
+                            <div class="date">
+                                {{event.createTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="parent" id="loadMoreY">
+                        <div style="width: 10% ;float: right">
+                            <span><a href="javascript:;"><i class="fa fa-plus"></i>加载更多</a> </span>
+                        </div>
+                    </li>
+                    <li class="parent" id="earlier1"><i class="fa fa-angle-double-down"></i> 更早</li>
+                    <li class="child_earlier1" ng-repeat="event in earlyAll">
+                        <div class="col1">
+                            <div class="cont">
+                                <div class="cont-col1">
+                                    <div class="label label-xs label-warning" ng-if="event.eventType == 'warning'">
+                                        <i class="fa fa-warning"></i>
+                                    </div>
+                                    <div class="label label-xs label-danger" ng-if="event.eventType == 'fatal'">
+                                        <i class="fa fa-flash"></i>
+                                    </div>
+                                    <div class="label label-xs label-success" ng-if="event.eventType == 'compound'">
+                                        <i class="fa fa-cogs"></i>
+                                    </div>
+                                </div>
+                                <div class="cont-col2">
+                                    <div class="desc">
+                                        {{event.eventTitle}}
+                                        <span ng-if="event.eventStatus == '0'"><a href="javascript:;" class="text-danger" ng-click="remark(event)">【未标注】</a> </span>
+                                        <span ng-if="event.eventStatus == '1'"><a href="javascript:;" class="text-success" ng-click="remark(event)">【已标注】</a> </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col2">
+                            <div class="date">
+                                {{event.createTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="parent" id="loadMoreE">
+                        <div style="width: 10% ;float: right">
+                            <span><a href="javascript:;"><i class="fa fa-plus"></i>加载更多</a> </span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab_2">
+            <div class="scroller" slim-scroll style="height: 290px;" data-always-visible="1" data-rail-visible="0">
+                <ul class="feeds">
+                    <li class="parent" id="today2"><i class="fa fa-angle-double-down"></i> 今天</li>
+                    <li class="child_today2" ng-repeat="event in todayWarn">
+                        <div class="col1">
+                            <div class="cont">
+                                <div class="cont-col1">
+                                    <div class="label label-xs label-warning">
+                                        <i class="fa fa-warning"></i>
+                                    </div>
+                                </div>
+                                <div class="cont-col2">
+                                    <div class="desc">
+                                        {{event.eventTitle}}
+                                        <span ng-if="event.eventStatus == '0'"><a href="javascript:;" class="text-danger" ng-click="remark(event)">【未标注】</a> </span>
+                                        <span ng-if="event.eventStatus == '1'"><a href="javascript:;" class="text-success" ng-click="remark(event)">【已标注】</a> </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col2">
+                            <div class="date">
+                                {{event.createTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="parent" id="yesterday2"><i class="fa fa-angle-double-down"></i> 昨天</li>
+                    <li class="child_yesterday2" ng-repeat="event in yesterdayWarn">
+                        <div class="col1">
+                            <div class="cont">
+                                <div class="cont-col1">
+                                    <div class="label label-xs label-warning">
+                                        <i class="fa fa-warning"></i>
+                                    </div>
+                                </div>
+                                <div class="cont-col2">
+                                    <div class="desc">
+                                        {{event.eventTitle}}
+                                        <span ng-if="event.eventStatus == '0'"><a href="javascript:;" class="text-danger" ng-click="remark(event)">【未标注】</a> </span>
+                                        <span ng-if="event.eventStatus == '1'"><a href="javascript:;" class="text-success" ng-click="remark(event)">【已标注】</a> </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col2">
+                            <div class="date">
+                                {{event.createTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="parent" id="earlier2"><i class="fa fa-angle-double-down"></i> 更早</li>
+                    <li class="child_earlier2" ng-repeat="event in earlyWarn">
+                        <div class="col1">
+                            <div class="cont">
+                                <div class="cont-col1">
+                                    <div class="label label-xs label-warning">
+                                        <i class="fa fa-warning"></i>
+                                    </div>
+                                </div>
+                                <div class="cont-col2">
+                                    <div class="desc">
+                                        {{event.eventTitle}}
+                                        <span ng-if="event.eventStatus == '0'"><a href="javascript:;" class="text-danger" ng-click="remark(event)">【未标注】</a> </span>
+                                        <span ng-if="event.eventStatus == '1'"><a href="javascript:;" class="text-success" ng-click="remark(event)">【已标注】</a> </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col2">
+                            <div class="date">
+                                {{event.createTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab_3">
+            <div class="scroller" slim-scroll style="height: 290px;" data-always-visible="1" data-rail-visible="0">
+                <ul class="feeds">
+                    <li class="parent" id="today3"><i class="fa fa-angle-double-down"></i> 今天</li>
+                    <li class="child_today3" ng-repeat="event in todayFatal">
+                        <div class="col1">
+                            <div class="cont">
+                                <div class="cont-col1">
+                                    <div class="label label-xs label-danger">
+                                        <i class="fa fa-flash"></i>
+                                    </div>
+                                </div>
+                                <div class="cont-col2">
+                                    <div class="desc">
+                                        {{event.eventTitle}}
+                                        <span ng-if="event.eventStatus == '0'"><a href="javascript:;" class="text-danger" ng-click="remark(event)">【未标注】</a> </span>
+                                        <span ng-if="event.eventStatus == '1'"><a href="javascript:;" class="text-success" ng-click="remark(event)">【已标注】</a> </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col2">
+                            <div class="date">
+                                {{event.createTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="parent" id="yesterday3"><i class="fa fa-angle-double-down"></i> 昨天</li>
+                    <li class="child_yesterday3" ng-repeat="event in yesterdayFatal">
+                        <div class="col1">
+                            <div class="cont">
+                                <div class="cont-col1">
+                                    <div class="label label-xs label-danger">
+                                        <i class="fa fa-flash"></i>
+                                    </div>
+                                </div>
+                                <div class="cont-col2">
+                                    <div class="desc">
+                                        {{event.eventTitle}}
+                                        <span ng-if="event.eventStatus == '0'"><a href="javascript:;" class="text-danger" ng-click="remark(event)">【未标注】</a> </span>
+                                        <span ng-if="event.eventStatus == '1'"><a href="javascript:;" class="text-success" ng-click="remark(event)">【已标注】</a> </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col2">
+                            <div class="date">
+                                {{event.createTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="parent" id="earlier3"><i class="fa fa-angle-double-down"></i> 更早</li>
+                    <li class="child_earlier3" ng-repeat="event in earlyFatal">
+                        <div class="col1">
+                            <div class="cont">
+                                <div class="cont-col1">
+                                    <div class="label label-xs label-danger">
+                                        <i class="fa fa-flash"></i>
+                                    </div>
+                                </div>
+                                <div class="cont-col2">
+                                    <div class="desc">
+                                        {{event.eventTitle}}
+                                        <span ng-if="event.eventStatus == '0'"><a href="javascript:;" class="text-danger" ng-click="remark(event)">【未标注】</a> </span>
+                                        <span ng-if="event.eventStatus == '1'"><a href="javascript:;" class="text-success" ng-click="remark(event)">【已标注】</a> </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col2">
+                            <div class="date">
+                                {{event.createTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab_4">
+            <ul class="feeds">
+                <li class="parent" id="today4"><i class="fa fa-angle-double-down"></i> 今天</li>
+                <li class="child_today4" ng-repeat="event in todayConf">
+                    <div class="col1">
+                        <div class="cont">
+                            <div class="cont-col1">
+                                <div class="label label-xs label-success">
+                                    <i class="fa fa-cogs"></i>
+                                </div>
+                            </div>
+                            <div class="cont-col2">
+                                <div class="desc">
+                                    {{event.eventTitle}}
+                                    <span ng-if="event.eventStatus == '0'"><a href="javascript:;" class="text-danger" ng-click="remark(event)">【未标注】</a> </span>
+                                    <span ng-if="event.eventStatus == '1'"><a href="javascript:;" class="text-success" ng-click="remark(event)">【已标注】</a> </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col2">
+                        <div class="date">
+                            {{event.createTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+                        </div>
+                    </div>
+                </li>
+                <li class="parent" id="yesterday4"><i class="fa fa-angle-double-down"></i> 昨天</li>
+                <li class="child_yesterday4" ng-repeat="event in yesterdayConf">
+                    <div class="col1">
+                        <div class="cont">
+                            <div class="cont-col1">
+                                <div class="label label-xs label-success">
+                                    <i class="fa fa-cogs"></i>
+                                </div>
+                            </div>
+                            <div class="cont-col2">
+                                <div class="desc">
+                                    {{event.eventTitle}}
+                                    <span ng-if="event.eventStatus == '0'"><a href="javascript:;" class="text-danger" ng-click="remark(event)">【未标注】</a> </span>
+                                    <span ng-if="event.eventStatus == '1'"><a href="javascript:;" class="text-success" ng-click="remark(event)">【已标注】</a> </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col2">
+                        <div class="date">
+                            {{event.createTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+                        </div>
+                    </div>
+                </li>
+                <li class="parent" id="earlier4"><i class="fa fa-angle-double-down"></i> 更早</li>
+                <li class="child_earlier4" ng-repeat="event in earlyConf">
+                    <div class="col1">
+                        <div class="cont">
+                            <div class="cont-col1">
+                                <div class="label label-xs label-success">
+                                    <i class="fa fa-cogs"></i>
+                                </div>
+                            </div>
+                            <div class="cont-col2">
+                                <div class="desc">
+                                    {{event.eventTitle}}
+                                    <span ng-if="event.eventStatus == '0'"><a href="javascript:;" class="text-danger" ng-click="remark(event)">【未标注】</a> </span>
+                                    <span ng-if="event.eventStatus == '1'"><a href="javascript:;" class="text-success" ng-click="remark(event)">【已标注】</a> </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col2">
+                        <div class="date">
+                            {{event.createTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+</div>

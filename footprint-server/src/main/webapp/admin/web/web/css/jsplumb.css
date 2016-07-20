@@ -1,0 +1,597 @@
+/** DISABLE TEXT SELECTION (SET ON BODY WHEN DRAGGING IS OCCURRING) **/
+._jsPlumb_drag_select * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/** FB **/
+#like {
+    position: fixed;
+    width: 77px;
+    height: 70px;
+    border: 0;
+    right: 11px;
+    bottom: -40px;
+}
+
+#retweet_button {
+  position: fixed;
+  bottom: 30px;
+  right: -7px;
+}
+
+#headerWrapper {
+	width:100%;
+	background-color:white;
+	position:fixed;
+	top:0;left:0;
+  z-index:100001;
+	height:44px;
+  padding:0;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  box-shadow: 0px 1px #eee;
+}
+
+#header {
+	margin-top:0;
+  
+	height:44px;
+  font-size:13px;
+	margin-left:auto;
+	margin-right:auto;    
+  
+	line-height: 44px;
+  max-width:1000px;
+  width:80%;
+}
+
+@media screen and (max-width:1000px) {
+	#header {
+		width:100%;
+	}
+}
+
+@media screen and (max-width:800px) {
+	#header select {
+		display:none;
+	}
+}
+
+@media screen and (max-width:700px) {
+	.library-links {
+		right:330px;
+	}
+}
+
+@media screen and (max-width:640px) {
+	.logo {
+		display:none;
+	}
+	#header {
+		text-align:center;
+		overflow:hidden;
+	}
+}
+
+.explanation i {
+	float: right;
+	margin-right: 25px;
+	margin-top: 13px;
+	font-size: 25px;
+	cursor:pointer;
+}
+
+.explanation i:hover {
+	color:orange;
+}
+
+.words {
+  text-align: left;
+  padding:50px;
+  background-color:white;
+}
+
+.code {
+  border:1px solid #456;
+}
+
+.logo {  
+  font-size:30px;
+  color:#1f1f1f;
+  text-shadow: 1px 1px #ccc;
+  float:left;
+  width:154px;
+  height:44px;
+  background-position:0px 5px;
+}
+
+ #main {  
+  font-size: 80%;    
+  width: 100%;
+  margin-left:auto;
+  margin-right: auto;  
+  text-align: center;
+  position: relative;
+  max-width: 1200px;
+}
+
+.demo {
+  position: relative;
+  width:100%;
+  background-color:white;    
+  margin-top: 10px;
+  margin-bottom:25px;
+  min-height:400px;
+}
+
+.explanation {
+    text-align: center;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    width: 100%;
+    z-index: 10000;
+    overflow: hidden;
+    font-size:13px;
+}
+
+
+.commands {
+  margin-bottom:10px;
+}
+
+.commands:hover {
+  z-index:10000;
+}
+
+/* demo elements */
+
+a, a:visited {
+    text-decoration:none;
+    color:black;
+    border-radius:0.2em;
+    -webkit-transition: color 0.15s ease-in;
+    -moz-transition: color 0.15s ease-in;
+    -o-transition: color 0.15s ease-in;
+    transition: color 0.15s ease-in;
+}
+
+a:hover {
+    color:#7AB02C;
+}
+
+a:active {
+  color:#FF2300;
+}
+
+.menu, #render, #explanation {   
+	background-color:#fff;	    
+}
+
+.menu {    
+  float:right;
+  font-size:12px;
+}
+
+.menu a {
+  margin-right: 19px;
+}
+
+.otherLibraries {
+  display:inline;
+}
+
+#render a {
+  margin-right:10px;
+}
+
+.selected {
+  color:orange !important;
+}
+
+.cmd { 
+  color:white;
+  margin-right:25px;
+}
+
+.cmd:hover { 
+  color:#FF2300;
+  text-decoration: underline;
+}
+.cmd:active {
+  color:#FF2300;
+}
+
+.label {
+  font-size:13px; 
+  padding:8px;
+  padding:8px;
+}
+
+.component { 
+  border:1px solid #346789; 
+  border-radius:0.5em;
+  opacity:0.8; 
+  filter:alpha(opacity=80);
+  background-color:white;
+  color:black;
+  padding:0.5em;   
+  font-size:0.8em;
+}
+
+.component:hover {
+    border:1px solid #123456;
+    box-shadow: 2px 2px 19px #444;
+   -o-box-shadow: 2px 2px 19px #444;
+   -webkit-box-shadow: 2px 2px 19px #444;
+   -moz-box-shadow: 2px 2px 19px #fff;
+    opacity:0.9;
+    filter:alpha(opacity=90);
+}
+
+
+.demo-links, .library-links {
+  position: fixed;
+  right: 0;
+  top: 44px;
+  font-size: 11px;
+  background-color: white;
+  opacity: 0.8;
+  padding-right: 10px;
+  padding-left: 5px;
+  text-transform: uppercase;
+  z-index:100001;
+}
+
+.demo-links div, .library-links a {
+  display:inline;
+  margin-right:7px;
+  margin-left:7px;
+}
+
+.demo-links i, .library-links i {
+  padding:4px;
+}
+
+.library-links {
+    right: 515px;
+    height: 19px;
+    line-height: 19px;
+}
+
+.current-library {
+  color:#7AB02C !important;
+}
+
+/** Z-INDEX **/
+
+._jsPlumb_connector { z-index:18; }
+._jsPlumb_endpoint { z-index:19; }
+
+
+/* ---------------------- bootstrap dropdowns ------------------------- */
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* load test */
+
+
+    #iframe { 
+      width: 98%;
+	height: 1000px;
+	position: absolute;
+	top: 8px;
+	left: 1%;
+	border: 0;
+    }     
+    #render { height:20px;}
+    #links {      
+      width: 143px;
+      font-size: 14px;
+      padding-left: 0px;
+      position: fixed;
+      left: 9px;
+      top: 52px;
+      z-index: 20;
+      background-color: white;                  
+    }
+    ul { padding:0; }
+    li {
+      list-style-type:none;
+    }
+    .current-tests {
+      color:orange !important;
+    }
+    #qunit-tests li.pass, #qunit-tests li.fail {
+      background-color:transparent;
+    }
+    .loadtest #main, #main.test  {
+      max-width: none;
+      margin-top: 52px;
+      background-color: white;
+    
+      margin-left: 162px;
+}
+
+
+.loadtest ._jsPlumb_connection { z-index:3; }
+.loadtest .jspLoad {
+    z-index:4;
+    position:absolute;
+    width:70px;
+    height:70px;
+    cursor:pointer;
+}
+
+.loadtest #header {
+  height:11em;
+  border:2px solid #824563;
+}
+
+.loadtest #setup {
+  float:left;
+}
+.loadtest #demo {
+  margin-top:10em;
+  position:relative;
+}
+.loadtest #setup, .loadtest #output {
+  font-size:12px;
+}
+
+.demo {
+    /* for IE10+ touch devices */
+    touch-action:none;
+}
+
+.flowchart-demo .window {
+    border: 1px solid #346789;
+    box-shadow: 2px 2px 19px #aaa;
+    -o-box-shadow: 2px 2px 19px #aaa;
+    -webkit-box-shadow: 2px 2px 19px #aaa;
+    -moz-box-shadow: 2px 2px 19px #aaa;
+    -moz-border-radius: 0.5em;
+    border-radius: 0.5em;
+   /*  opacity: 0.8;
+    filter: alpha(opacity=80); */
+    width: 250px;
+    height: 140px;
+    cursor: pointer;
+    text-align: center;
+    z-index: 20;
+    position: absolute;
+    background-color: #FFFFFF;
+    color: black;
+    -webkit-transition: -webkit-box-shadow 0.15s ease-in;
+    -moz-transition: -moz-box-shadow 0.15s ease-in;
+    -o-transition: -o-box-shadow 0.15s ease-in;
+    transition: box-shadow 0.15s ease-in;
+    left: 360px;
+}
+.flowchart-demo .window.open{
+	width:500px;
+	animation: toOpen 1s;
+	-moz-animation: toOpen 1s;	/* Firefox */
+	-webkit-animation: toOpen 1s;	/* Safari �� Chrome */
+	-o-animation: toOpen 1s;	/* Opera */
+} 
+.flowchart-demo .window.silde-out{
+	animation: toHide 1s;
+	-moz-animation: toHide 1s;	/* Firefox */
+	-webkit-animation: toHide 1s;	/* Safari �� Chrome */
+	-o-animation: toHide 1s;	/* Opera */
+} 
+.window-content{
+	width:100%;
+	height:100%;
+	position:relative;
+	overflow:hidden;
+}
+.window-content > .window-charts{
+	width:250px;
+	position: absolute;
+	left:250px;
+	top:0;
+	height:126px;
+}
+.flowchart-demo .window:hover {
+    box-shadow: 2px 2px 19px #444;
+    -o-box-shadow: 2px 2px 19px #444;
+    -webkit-box-shadow: 2px 2px 19px #444;
+    -moz-box-shadow: 2px 2px 19px #444;
+    /* opacity: 0.6;
+    filter: alpha(opacity=60); */
+}
+
+.flowchart-demo .active {
+    border: 1px dotted green;
+}
+
+.flowchart-demo .hover {
+    border: 1px dotted red;
+}
+
+#flowchartWindow1 {
+    top: 20px;
+    left: 20px;
+}
+
+.flowchart-demo ._jsPlumb_connector {
+    z-index: 4;
+}
+
+.flowchart-demo ._jsPlumb_endpoint, .endpointTargetLabel, .endpointSourceLabel {
+    z-index: 21;
+    cursor: pointer;
+}
+
+.window._jsPlumb_connected {
+    border: 1px solid #E2E4E5;
+}
+
+.window._jsPlumb_connected:first-child {
+    border: 1px solid #348C92;
+}
+.jsplumb-drag {
+    border: 4px solid pink !important;
+}
+
+path, ._jsPlumb_endpoint {
+    cursor: pointer;
+}
+.flowchart-demo .topology-app{
+	text-align:center;
+	color:#678098;
+	width:200px;
+	height:160px;
+	border-radius: 5px!important;
+	position:relative;
+}
+.topology-app i {
+	font-size:36px;
+	line-height: 50px;
+}
+.topology-app p.title{
+	font-size:14px;
+	text-align:center;
+	padding: 0 0 5px 0;
+	font-weight:bold;
+	color:#216477;
+}
+.topology-app p{
+	margin:0;
+	font-size:13px;
+	text-align:left;
+}
+.topology-app p > label{
+	display:inline-block;
+	width:100px;
+	text-align:right;
+	margin:0;
+}
+.window-p p > span{
+}
+.window-p{
+	width:228px;
+	text-align:left;
+	clear:both;
+	font-size:13px;
+	color:#678098;
+	padding:5px;
+}
+.window-i{
+  width: 20px;
+  position: absolute;
+  left: 228px;
+  top: 0;
+  bottom: 0;
+  line-height: 138px;
+  background: #D6E8E9;
+  color: #688097;
+  text-align: center;
+  padding-left: 3px;
+}
+.window-url > a{
+	color: #216477;
+  	font-weight: bold;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+  	height: 20px;
+  	display: block;
+  	width: 100%;
+  	white-space: nowrap;
+}
+.window-p > p {
+	margin:0;
+	height:25px;
+	line-height:25px;
+	padding-left:5px;	
+	overflow: hidden;
+  	text-overflow: ellipsis;
+  	white-space: nowrap;
+}
+.window-p > p label{
+	margin:0;
+	width:58px;
+}
+
+@keyframes toOpen
+{
+	from {width:250px;}
+	to {width:500px;}
+}
+
+@-moz-keyframes toOpen /* Firefox */
+{
+	from {width:250px;}
+	to {width:500px;}
+}
+
+@-webkit-keyframes toOpen /* Safari and Chrome */
+{
+	from {width:250px;}
+	to {width:500px;}
+}
+
+@-o-keyframes toOpen /* Opera */
+{
+	from {width:250px;}
+	to {width:500px;}
+}
+
+@keyframes toHide
+{
+	from {width:500px;}
+	to {width:250px;}
+}
+
+@-moz-keyframes toHide /* Firefox */
+{
+	from {width:500px;}
+	to {width:250px;}
+}
+
+@-webkit-keyframes toHide /* Safari and Chrome */
+{
+	from {width:500px;}
+	to {width:250px;}
+}
+
+@-o-keyframes toHide /* Opera */
+{
+	from {width:500px;}
+	to {width:250px;}
+}

@@ -1,0 +1,37 @@
+/* ========================================================
+*
+* user self define
+
+* ======================================================== */
+
+.custom-mt5 {
+    margin-top: 5px;
+}
+
+.custom-mt10 {
+    margin-top: 10px;
+}
+
+.custom-mt15 {
+    margin-top: 15px;
+}
+
+.custom-mt20 {
+    margin-top: 20px;
+}
+
+.custom-ml10 {
+    margin-left: 10px;
+}
+
+.custom-ml20 {
+    margin-left: 20px;
+}
+
+.custom-mr10 {
+    margin-right: 10px;
+}
+
+.custom-mr20 {
+    margin-right: 20px;
+}

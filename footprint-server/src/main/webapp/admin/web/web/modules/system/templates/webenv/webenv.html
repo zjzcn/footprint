@@ -1,0 +1,98 @@
+<div class="portlet-body" ng-controller="WebenvCtrl" ng-init="init()">
+    <div class="select-refresh-title">
+        <div class="title-left">
+            <select class="chosen-select" id="appKeySelect" system-select on-change="appKeyChange()">
+            </select>
+        </div>
+    </div>
+    </br>
+    <div class="row">
+        <!-- BEGIN PAGE CONTENT INNER LEFT-->
+        <div class="col-md-4 col-sm-12">
+            <table class="tree-table" id="WebEnvTable">
+                <thead class="thead-bg">
+                    <tr>
+                        <th>节点名称</th>
+                        <th>Agent版本</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="tab in tabs"
+                        ng-class="{true:'active'}[tab==selectedTab]" ng-click="selectTab(tab)">
+                        <td>{{tab.name}}</td>
+                        <td>{{tab.version}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- BEGIN PAGE CONTENT INNER LEFT-->
+
+        <!-- BEGIN PAGE CONTENT INNER RIGHT-->
+        <div class="col-md-8 col-sm-12 scoller">
+
+            <!-- BEGIN PORLET DATA TABLES -->
+            
+                    <table id="webenv_Table" class="table" cellspacing="0" width="100%">
+                        <thead class="thead-bg">
+                            <tr>
+                                <th>配置项</th>
+                                <th>参数</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="detail in webenv">
+                            <th>{{detail.keyname}}</th>
+                            <td>{{detail.value}}</td>
+                        </tr>
+                        <!--<tr>
+                            <th>OS version</th>
+                            <td>{{detail.OSversion}}</td>
+                        </tr>
+                        <tr>
+                            <th>Processors</th>
+                            <td>{{detail.Processors}}</td>
+                        </tr>
+                        <tr>
+                            <th>Dispatcher Version</th>
+                            <td>{{detail.DispatcherVersion}}</td>
+                        </tr>
+                        <tr>
+                            <th>Heap initial (MB)</th>
+                            <td>{{detail.Heapinitial}}</td>
+                        </tr>
+                        <tr>
+                            <th>Log path</th>
+                            <td>{{detail.Logpath}}</td>
+                        </tr>
+                        <tr>
+                            <th>OS</th>
+                            <td>{{detail.OS}}</td>
+                        </tr>
+                        <tr>
+                            <th>Server port</th>
+                            <td>{{detail.Serverport}}</td>
+                        </tr>
+                        <tr>
+                            <th>Framework</th>
+                            <td>{{detail.Framework}}</td>
+                        </tr>
+                        <tr>
+                            <th>Arch</th>
+                            <td>{{detail.Arch}}</td>
+                        </tr>
+                        <tr>
+                            <th>Java vendor</th>
+                            <td>{{detail.Javavendor}}</td>
+                        </tr>
+                        <tr>
+                            <th>JVM arguments</th>
+                            <td>{{detail.JVMarguments}}</td>
+                        </tr>-->
+                        </tbody>
+                    </table>
+            <!-- END   PORLET  DATA TABLES -->
+        </div>
+        <!-- BEGIN PAGE CONTENT INNER RIGHT-->
+    </div>
+    <!-- END ROW-->
+</div>

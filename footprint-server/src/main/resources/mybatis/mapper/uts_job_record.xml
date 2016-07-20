@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.footprint.server.platform.uts.dao.JobRecordDao">
+
+	<insert id="insert" parameterType="com.footprint.server.platform.uts.entity.JobRecord">
+        <![CDATA[
+             insert into uts_job_record(fire_instance_id, job_group,job_name,trigger_name,trigger_group,
+             client_node_name, create_time, client_received_time, last_report_time,finish_time,root_exception_msg,
+             root_exception_class,exception_stack_trace,job_state) 
+             values (#{fireInstanceId},#{jobGroup},#{jobName},#{triggerName},#{triggerGroup},
+             #{clientNodeName},#{createTime},#{clientReceivedTime},#{lastReportTime},#{finishTime},#{rootExceptionMsg},
+             #{rootExceptionClass},#{exceptionStackTrace},#{jobState})
+    	   ]]>
+	</insert>
+	
+    <update id="update" parameterType="com.footprint.server.platform.uts.entity.JobRecord">
+        <![CDATA[
+             update uts_job_record set create_time=#{createTime},client_received_time=#{clientReceivedTime},
+             last_report_time=#{lastReportTime},finish_time=#{finishTime},client_node_name=#{clientNodeName},
+             root_exception_msg=#{rootExceptionMsg}, root_exception_class=#{rootExceptionClass},
+             exception_stack_trace=#{exceptionStackTrace},job_state=#{jobState}
+             where fire_instance_id=#{fireInstanceId}
+    	   ]]>
+    </update>
+    
+    <delete id="delete">
+		DELETE FROM uts_job_record  WHERE fire_instance_id=#{fireInstanceId}
+	</delete>
+
+	<select id="getJobRecord" parameterType="string" resultType="com.footprint.server.platform.uts.entity.JobRecord">
+		<![CDATA[
+             select * from uts_job_record where fire_instance_id=#{fireInstanceId}
+    	   ]]>
+	</select>
+	
+	<select id="queryMayTimeoutList" resultType="com.footprint.server.platform.uts.entity.JobRecord">
+		<![CDATA[
+             select * from uts_job_record where job_state in('init','client_received','executing')
+    	   ]]>
+	</select>
+	
+	<delete id="cleanHistoryJob">
+		DELETE FROM uts_job_record  WHERE  TIMESTAMPDIFF(HOUR, now(), create_time) > 72
+	</delete>
+	
+	<select id="queryList" resultType="com.footprint.server.platform.uts.entity.JobRecord">
+		<![CDATA[
+             select * from uts_job_record
+    	   ]]>
+	</select>
+</mapper>

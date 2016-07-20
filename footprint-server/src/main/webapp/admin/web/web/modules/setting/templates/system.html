@@ -1,0 +1,204 @@
+<div class="portlet-body" ng-controller="SystemSettingCtrl">
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <a class="caption-subject font-green-sharp uppercase" href="javascript:;">
+                    Web请求过程设置
+                </a>
+            </div>
+            <div class="actions">
+                <button class="btn btn-success" ng-click="save_webrequest()"><i class="fa fa-check-square-o"></i> 保存</button>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <form class="form-horizontal" name="PolicyForm">
+                <div class="form-group" ng-class="{true:'has-error'}[error.urilist]">
+                    <label class="col-sm-3 control-label"><span class="text-danger">*</span>web请求过程采集URI列表</label>
+                    <div class="col-sm-8">
+                        <textarea name="urilist" rows="3" class="form-control" ng-model="formData.urilist" required></textarea>
+                        <p class="initialism" style="color: #a0a3a4">格式为回车分割的URI正则表达式列表，每行一个正则表达式。缺省值为空，即不采集。当设定该参数时，只采集符合列表中规则的URI请求。</p>
+                    </div>
+                </div>
+ <!--               <div class="form-group" ng-class="{true:'has-error'}[error.webtrace]">
+                    <label class="col-sm-3 control-label"><span class="text-danger">*</span>是否启用Web请求过程追踪</label>
+                    <div class="col-sm-8">
+                        <label class="radio-inline">
+                            <input type="radio" name="webtrace" value="webtraceon" ng-model="formData.webtrace" required>是
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="webtrace" value="webtraceoff" ng-model="formData.webtrace" required>否
+                        </label>
+                        <p class="initialism" style="color: #a0a3a4">启用后，应用探针对该应用中响应时间超过指定阈值的Web过程会保留各种跟踪记录数据，例如代码的调用堆栈和执行时间、HTTP请求参数、查询慢的SQL语句等等。</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{true:'has-error'}[error.webtracevalue]">
+                    <label class="col-sm-3 control-label">Web请求过程追踪阈值</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="webtracevalue" class="form-control" ng-model="formData.webtracevalue" required>
+                        <p class="initialism" style="color: #a0a3a4">单位毫秒。该选项只有在启用"Web请求过程追踪"选项开启后才有效。</p>
+                    </div>
+                </div>-->
+            </form>
+        </div>
+    </div>
+
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <a class="caption-subject font-green-sharp uppercase" href="javascript:;">
+                    数据库设置
+                </a>
+            </div>
+            <div class="actions">
+                <button class="btn btn-success" ng-click="save_database()"><i class="fa fa-check-square-o"></i> 保存</button>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <form class="form-horizontal" name="PolicyForm">
+                <div class="form-group" ng-class="{true:'has-error'}[error.sqltrace]">
+                    <label class="col-sm-3 control-label"><span class="text-danger">*</span>是否启用慢SQL追踪</label>
+                    <div class="col-sm-8">
+                        <label class="radio-inline">
+                            <input type="radio" name="sqltrace" value="y" ng-model="formData.sqltrace" required>是
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="sqltrace" value="n" ng-model="formData.sqltrace" required>否
+                        </label>
+                        <p class="initialism" style="color: #a0a3a4"> 对超过指定响应阈值的SQL语句进行跟踪</p>
+                    </div>
+                </div>
+                <!--<div class="form-group" ng-class="{true:'has-error'}[error.sqltracevalue]">
+                    <label class="col-sm-3 control-label">慢SQL跟踪阈值</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="sqltracevalue" class="form-control" ng-model="formData.sqltracevalue" required>
+                        <p class="initialism" style="color: #a0a3a4">单位为毫秒。该选项只有在"启用慢SQL跟踪"开启时才生效。
+                            两个选项必须一起使用。当SQL性能大于该阈值的时候，记录SQL跟踪的数据。</p>
+                    </div>
+                </div>-->
+            </form>
+        </div>
+    </div>
+
+    <!--    <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <a class="caption-subject font-green-sharp uppercase" href="javascript:;">
+                        外部服务
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <form class="form-horizontal" name="PolicyForm">
+                    <div class="form-group" ng-class="{true:'has-error'}[error.extservicelist]">
+                        <label class="col-sm-3 control-label"><span class="text-danger">*</span>外部服务采集列表</label>
+                        <div class="col-sm-8">
+                            <textarea name="extservicelist" rows="3" class="form-control" ng-model="formData.extservicelist" required></textarea>
+                            <p class="initialism" style="color: #a0a3a4">格式为回车分割的正则表达式列表，每行一个正则表达式。缺省值为空，即不采集。当设定该参数时，只采集符合列表中规则的外部服务请求。</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{true:'has-error'}[error.extservicevalue]">
+                        <label class="col-sm-3 control-label">慢外部服务阈值</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="extservicevalue" class="form-control" ng-model="formData.extservicevalue" required>
+                            <p class="initialism" style="color: #a0a3a4">单位为毫秒。当外部服务调用响应时间大于该阈值的时候，定义为慢外部服务调用。</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>-->
+
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <a class="caption-subject font-green-sharp uppercase" href="javascript:;">
+                        线程剖析
+                    </a>
+                </div>
+                <div class="actions">
+                    <button class="btn btn-success" ng-click="save_thread()"><i class="fa fa-check-square-o"></i> 保存</button>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <form class="form-horizontal" name="PolicyForm">
+                    <div class="form-group" ng-class="{true:'has-error'}[error.thread]">
+                        <label class="col-sm-3 control-label"><span class="text-danger">*</span>是否启用自动线程剖析</label>
+                        <div class="col-sm-8">
+                            <label class="radio-inline">
+                                <input type="radio" name="thread" value="y" ng-model="formData.thread" required>是
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="thread" value="n" ng-model="formData.thread" required>否
+                            </label>
+                            <p class="initialism" style="color: #a0a3a4">线程剖析开启对性能有一定影响，在问题分析时可手动开启。也可设定自动执行，当响应性能超过阈值时，自动记录线程剖析数据。</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{true:'has-error'}[error.threadvalue]">
+                        <label class="col-sm-3 control-label"><span class="text-danger">*</span>线程剖析阈值</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="threadvalue" class="form-control" ng-model="formData.threadvalue" required >
+                            <p class="initialism" style="color: #a0a3a4">单位为毫秒。该选项只有在"启用自动线程剖析"开启时才生效。
+                                两个选项必须一起使用。当请求响应时间大于该阈值的时候，记录线程剖析数据。</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <a class="caption-subject font-green-sharp uppercase" href="javascript:;">
+                    JVMs
+                </a>
+            </div>
+            <div class="actions">
+                <button class="btn btn-success" ng-click="save_jvms()"><i class="fa fa-check-square-o"></i> 保存</button>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <form class="form-horizontal" name="PolicyForm">
+                <div class="form-group" ng-class="{true:'has-error'}[error.jvm]">
+                    <label class="col-sm-3 control-label"><span class="text-danger">*</span>是否启用JVM性能数据采集</label>
+                    <div class="col-sm-8">
+                        <label class="radio-inline">
+                            <input type="radio" name="jvm" value="y" ng-model="formData.jvm" required>是
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="jvm" value="n" ng-model="formData.jvm" required>否
+                        </label>
+                        <p class="initialism" style="color: #a0a3a4">启用JVM性能数据收集，如GC，堆栈，线程等数据。</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<!--    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <a class="caption-subject font-green-sharp uppercase" href="javascript:;">
+                    错误
+                </a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <form class="form-horizontal" name="PolicyForm">
+                <div class="form-group" ng-class="{true:'has-error'}[error.ignoreweb]">
+                    <label class="col-sm-3 control-label">忽略Web请求错误</label>
+                    <div class="col-sm-8">
+                        <textarea name="ignoreweb" rows="3" class="form-control" ng-model="formData.ignoreweb" required></textarea>
+                        <p class="initialism" style="color: #a0a3a4">格式为回车分割的URI，缺省值为空。当设置该选项时，出现在列表中的URI的错误将被忽略，不被记录数据。</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{true:'has-error'}[error.ignoreapp]">
+                    <label class="col-sm-3 control-label">忽略应用异常</label>
+                    <div class="col-sm-8">
+                        <textarea name="ignoreapp" rows="3" class="form-control" ng-model="formData.ignoreapp" required></textarea>
+                        <p class="initialism" style="color: #a0a3a4">格式为回车分割的Java异常类名称字符串，缺省值为空。当设置该选项时，出现在列表中的类的异常将被忽略，不被记录数据。</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>-->
+
+</div>

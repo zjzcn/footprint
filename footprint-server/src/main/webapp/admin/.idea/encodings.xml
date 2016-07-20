@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/components/crumb.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/components/header.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/components/modal.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/components/pager.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/components/sidebar.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/components/widget.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/plugins/alert.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/plugins/confirm.vue" charset="UTF-8" />
+  </component>
+</project>

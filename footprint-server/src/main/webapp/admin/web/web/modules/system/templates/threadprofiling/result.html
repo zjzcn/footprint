@@ -1,0 +1,295 @@
+<div class="mg-top-20">
+    <div class="page-content">
+        <div class="portlet tasks-widget page-content-wrap">
+            <div class="portlet-title page-content-title">
+                <div class="caption">
+                    <span class="caption-subject uppercase">
+                        剖析结果
+                    </span>
+                </div>
+                <!--<div class="actions">
+                    <a class="btn btn-default pull-right" ui-sref="System.ThreadProfiling">返回</a>
+                </div>-->
+            </div>
+            <div class="titleline"></div>
+
+            <div class="portlet-body" ng-controller="ResultCtrl">
+                <div class="row">
+                    <div class="col-md-3 col-sm-12">
+                        <div class="explain">
+                            <h4>树相关设置</h4>
+                            <div class="content">
+                                <h5>显示</h5>
+                                <ul>
+                                    <li>
+                                        <label class="checkbox-inline">
+                                        <input type="checkbox" name="show" value="showweb">web请求
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="show" value="showback">后台任务
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="show" value="showother">其他
+                                        </label>
+                                    </li>
+                                </ul>
+                                <h5>方向</h5>
+                                <ul>
+                                    <li>
+                                        <label class="radio-inline">
+                                        <input type="radio" name="direction" value="up" ng-model="formData.direction" required>从上展开
+                                        </label>
+                                        <i class="fa fa-question-circle tool-tip" data-tip="从上展开以 父方法 -> 子方法 形式依次展开调用堆栈"></i>
+                                    </li>
+                                    <li>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="direction" value="down" ng-model="formData.direction" required>从下展开
+                                        </label>
+                                        <i class="fa fa-question-circle tool-tip" data-tip="从下展开从叶子节点开始展开调用堆栈"></i>
+                                    </li>
+                                </ul>
+                                <h5>条件</h5>
+                                <ul>
+                                    <li>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="condition" value="con01">显示大于5%的线程
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="condition" value="con02">显示RUNNABLE线程
+                                        </label>
+                                    </li>
+                                </ul>
+                                <h5>行号</h5>
+                                <ul>
+                                    <li>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="line" value="showline">显示行号
+                                        </label>
+                                    </li>
+                                </ul>
+                                <input type="button" class="btn btn-success" value="刷新">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-12 scoller">
+                        <div id="nestable_list_menu">
+                            <input type="button" class="btn btn-success" data-action="expand-first" value="展开最耗时线程"/>
+                            <input type="button" class="btn btn-default" data-action="expand-all" value="展开所有"/>
+                            <input type="button" class="btn btn-default" data-action="collapse-all" value="收起所有"/>
+                        </div>
+                        <div class="nestable">
+                            <div class="dd" id="nestable_list_1">
+                                <ol class="dd-list">
+                                    <li class="dd-item" id="test">
+                                        <div class="dd-handle">
+                                            <span class="rowContent">
+                                                <span><font >Other</font><span>48.3%</span></span>
+                                                java.lang.Thread.run:
+                                                <font>744</font>
+                                            </span>
+                                        </div>
+                                        <ol class="dd-list">
+                                            <li class="dd-item">
+                                                <div class="dd-handle">
+                                                    <span class="rowContent">
+                                                        <span><font >Other</font><span>48.3%</span></span>
+                                                        java.lang.Thread.run:
+                                                        <font>744</font>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="dd-item">
+                                                <div class="dd-handle">
+                                                    <span class="rowContent">
+                                                        <span><font >Other</font><span>48.3%</span></span>
+                                                        java.lang.Thread.run:
+                                                        <font>744</font>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="dd-item">
+                                                <div class="dd-handle">
+                                                    <span class="rowContent">
+                                                        <span><font >Other</font><span>48.3%</span></span>
+                                                        java.lang.Thread.run:
+                                                        <font>744</font>
+                                                    </span>
+                                                </div>
+                                                <ol class="dd-list">
+                                                    <li class="dd-item">
+                                                        <div class="dd-handle">
+                                                            <span class="rowContent">
+                                                                <span><font >Other</font><span>48.3%</span></span>
+                                                                java.lang.Thread.run:
+                                                                <font>744</font>
+                                                            </span>
+                                                        </div>
+                                                    </li>
+                                                    <li class="dd-item">
+                                                        <div class="dd-handle">
+                                                            <span class="rowContent">
+                                                                <span><font >Other</font><span>48.3%</span></span>
+                                                                java.lang.Thread.run:
+                                                                <font>744</font>
+                                                            </span>
+                                                        </div>
+                                                    </li>
+                                                    <li class="dd-item">
+                                                        <div class="dd-handle">
+                                                            <span class="rowContent">
+                                                                <span><font >Other</font><span>48.3%</span></span>
+                                                                java.lang.Thread.run:
+                                                                <font>744</font>
+                                                            </span>
+                                                        </div>
+                                                    </li>
+                                                </ol>
+                                            </li>
+                                            <li class="dd-item">
+                                                <div class="dd-handle">
+                                                    <span class="rowContent">
+                                                        <span><font >Other</font><span>48.3%</span></span>
+                                                        java.lang.Thread.run:
+                                                        <font>744</font>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="dd-item">
+                                                <div class="dd-handle">
+                                                    <span class="rowContent">
+                                                        <span><font >Other</font><span>48.3%</span></span>
+                                                        java.lang.Thread.run:
+                                                        <font>744</font>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li class="dd-item">
+                                        <div class="dd-handle">
+                                            <span class="rowContent">
+                                                <span><font >Other</font><span>48.3%</span></span>
+                                                java.lang.Thread.run:
+                                                <font>744</font>
+                                            </span>
+                                        </div>
+                                        <ol class="dd-list">
+                                            <li class="dd-item">
+                                                <div class="dd-handle">
+                                                    <span class="rowContent">
+                                                        <span><font >Other</font><span>48.3%</span></span>
+                                                        java.lang.Thread.run:
+                                                        <font>744</font>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="dd-item">
+                                                <div class="dd-handle">
+                                                    <span class="rowContent">
+                                                        <span><font >Other</font><span>48.3%</span></span>
+                                                        java.lang.Thread.run:
+                                                        <font>744</font>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="dd-item">
+                                                <div class="dd-handle">
+                                                    <span class="rowContent">
+                                                        <span><font >Other</font><span>48.3%</span></span>
+                                                        java.lang.Thread.run:
+                                                        <font>744</font>
+                                                    </span>
+                                                </div>
+                                                <ol class="dd-list">
+                                                    <li class="dd-item">
+                                                        <div class="dd-handle">
+                                                            <span class="rowContent">
+                                                                <span><font >Other</font><span>48.3%</span></span>
+                                                                java.lang.Thread.run:
+                                                                <font>744</font>
+                                                            </span>
+                                                        </div>
+                                                    </li>
+                                                    <li class="dd-item">
+                                                        <div class="dd-handle">
+                                                            <span class="rowContent">
+                                                                <span><font >Other</font><span>48.3%</span></span>
+                                                                java.lang.Thread.run:
+                                                                <font>744</font>
+                                                            </span>
+                                                        </div>
+                                                    </li>
+                                                    <li class="dd-item">
+                                                        <div class="dd-handle">
+                                                            <span class="rowContent">
+                                                                <span><font >Other</font><span>48.3%</span></span>
+                                                                java.lang.Thread.run:
+                                                                <font>744</font>
+                                                            </span>
+                                                        </div>
+                                                    </li>
+                                                </ol>
+                                            </li>
+                                            <li class="dd-item">
+                                                <div class="dd-handle">
+                                                    <span class="rowContent">
+                                                        <span><font >Other</font><span>48.3%</span></span>
+                                                        java.lang.Thread.run:
+                                                        <font>744</font>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="dd-item">
+                                                <div class="dd-handle">
+                                                    <span class="rowContent">
+                                                        <span><font >Other</font><span>48.3%</span></span>
+                                                        java.lang.Thread.run:
+                                                        <font>744</font>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <!-- <img src="images/temp/result.png" /> -->
+
+                        <table id="treeTable" class="tree-table" style="width: 100; border: 0;" cellspacing="0" cellpadding="0">
+                            <tbody>
+                            <tr data-tt-id="0" >
+                                <td>aaa</td>
+                            </tr>
+                            <tr data-tt-id="1" data-tt-parent-id="0">
+                                <td>bbb</td>
+                            </tr>
+                            <tr data-tt-id="1-1" data-tt-parent-id="1">
+                                <td>ccc</td>
+                            </tr>
+                            <tr data-tt-id="2">
+                                <td>AAA</td>
+                            </tr>
+                            <tr data-tt-id="2-1" data-tt-parent-id="2">
+                                <td>BBB</td>
+                            </tr>
+                            <tr data-tt-id="2-2" data-tt-parent-id="2-1">
+                                <td>CCCC</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

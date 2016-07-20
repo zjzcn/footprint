@@ -1,0 +1,141 @@
+<div class="page-header navbar navbar-fixed-top">
+	<div class="page-header-inner">
+		<div class="page-logo">
+			<a href="index.html">
+				<img src="images/logo.png" alt="云迹" class="logo-default"/>
+				<span class="hidden-sm hidden-xs">Baymax</span>
+			</a>
+			<div class="menu-toggler sidebar-toggler">
+			</div>
+		</div>
+        <div class="hor-menu hor-menu-light hidden-sm hidden-xs">
+            <ul class="nav navbar-nav">
+                <!--				<li class="classic-menu-dropdown">
+                                    <a data-toggle="dropdown" href="javascript:;" da00ta-hover="megamenu-dropdown" data-close-others="true">
+                                        <i class="fa fa-laptop"></i>Server <i class="fa fa-angle-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-left">
+                                        <li>
+                                            <a href="javascript:;">
+                                            <i class="fa fa-tablet"></i>App</a>
+                                        </li>
+                                    </ul>
+                                </li>-->
+<!--                 <li class="mega-menu-dropdown active">
+                    <a ui-sref="OverView.Main">
+                        <i class="fa fa-globe"></i>概览
+                    </a>
+                </li>
+                <li class="mega-menu-dropdown">
+                    <a ui-sref="System.Topology">
+                        <i class="fa fa-line-chart"></i>系统
+                    </a>
+                </li>
+                <li class="mega-menu-dropdown">
+                    <a ui-sref="Setting.System">
+                        <i class="fa fa-cogs"></i>设置
+                    </a>
+                </li>
+                <li class="mega-menu-dropdown">
+                    <a ui-sref="Agent">
+                        <i class="fa fa-cloud-download"></i>Agent下载
+                    </a>
+                </li>-->
+                <li class="mega-menu-dropdown" ng-repeat="menu in menus"
+                	ng-class="{true:'active'}[isMenuSelected(menu)]"
+                	ng-click="selectMenu(menu)">
+                    <a ui-sref="{{menu.url}}">
+                        <i ng-class="menu.icon"></i>{{menu.name}}
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+		<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"></a>
+		<div class="top-menu">
+			
+			<ul class="nav navbar-nav pull-right">
+<!--				<li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+					<i class="fa fa-envelope-o"></i>
+					<span class="badge badge-default">7</span>
+					</a>
+					<ul class="dropdown-menu">
+						<li class="external">
+							<h3><span class="bold">7条</span>预警</h3>
+							<a href="extra_profile.html">查看所有</a>
+						</li>
+						<li>
+							<ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
+								<li>
+									<a href="javascript:;">
+									<span class="time">3 mins</span>
+									<span class="details">
+									<span class="label label-sm label-icon label-danger">
+									<i class="fa fa-bolt"></i>
+									</span>
+									苏宁易购预警</span>
+									</a>
+								</li>
+								<li>
+									<a href="javascript:;">
+									<span class="time">10 mins</span>
+									<span class="details">
+									<span class="label label-sm label-icon label-warning">
+									<i class="fa fa-bell-o"></i>
+									</span>
+									苏宁易购网络故障</span>
+									</a>
+								</li>
+								<li>
+									<a href="javascript:;">
+									<span class="time">2 days</span>
+									<span class="details">
+									<span class="label label-sm label-icon label-danger">
+									<i class="fa fa-bolt"></i>
+									</span>
+									苏宁易购网络故障</span>
+									</a>
+								</li>
+								<li>
+									<a href="javascript:;">
+									<span class="time">3 days</span>
+									<span class="details">
+									<span class="label label-sm label-icon label-danger">
+									<i class="fa fa-bolt"></i>
+									</span>
+									苏宁易购网络故障</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="javascript:;" class="dropdown-toggle">
+					<i class="fa fa-question-circle"></i>
+					</a>
+				</li>-->
+				<li class="dropdown dropdown-user">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+					<span class="top-user"><i class="fa fa-user"></i></span>
+					<span class="username username-hide-on-mobile">
+						admin
+					</span>
+					<i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-default">
+						<li>
+							<a href="javascript:;">
+							<i class="fa fa-user"></i>用户信息</a>
+						</li>
+						<li>
+							<a href="javascript:;">
+							<i class="fa fa-sign-out"></i>退出登录</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

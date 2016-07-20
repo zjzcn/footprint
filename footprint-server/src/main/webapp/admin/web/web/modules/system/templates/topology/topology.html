@@ -1,0 +1,69 @@
+<div class="portlet-body" ng-controller="TopologyCtrl" data-demo-id="flowchart" >
+   <!--  <img src="images/temp/topo.png" width="892" height="564" /> -->
+    <div class="select-refresh-title">
+        <div class="title-left">
+            <select class="chosen-select" system-select on-change="appKeyChange()"></select>
+        </div>
+        <div class="title-right">
+            <div class="">
+                <div class="pull-right" id="dateRangePicker" date-range-picker on-change="dateRangeChange()">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="status-legend">
+        <ul>
+            <li><span class="normal"></span>正常</li>
+            <li><span class="warning"></span>警报</li>
+            <li><span class="danger"></span>严重警报</li>
+            <li><span class="nodata"></span>无数据</li>
+        </ul>
+    </div>
+    <div class="demo flowchart-demo" id="flowchart-demo">
+        <div class="window" id="flowchartWindow0">
+            <div class="window-content topology-app">
+                <div class="topology-circle"></div>
+                <div class="status">
+                    <div class="ico java-ico"></div>
+                </div>
+            </div>
+            <p class="title">Apache</p>
+            <p class="target">11112rpm/0.147s/0.54%</p>
+        </div>
+        <div class="window status-warning" id="flowchartWindow1">
+            <div class="window-content topology-app">
+                <div class="topology-circle"></div>
+                <div class="status">
+                    <div class="ico java-ico"></div>
+                </div>
+            </div>
+            <p class="title">java_demo</p>
+            <p class="target">578699rpm/0.63s/0.54%</p>
+        </div>
+        <div class="window" id="flowchartWindow2">
+            <div class="window-content">
+                <div class="window-p" data-rt="111" data-rpm="123" data-err="1.4">
+                    <i class="fa fa-globe"></i>
+                    <p>10.127.169.22</p>
+                </div>
+            </div>
+        </div>
+        <div class="window" id="flowchartWindow3">
+            <div class="window-content">
+                <div class="window-p" data-rt="112" data-rpm="123" data-err="2.4">
+                    <i class="fa fa-database"></i>
+                    <p>MySQL</p>
+                </div>
+            </div>
+        </div>
+        <div class="window" id="flowchartWindow4">
+            <div class="window-content">
+                <div class="window-p" data-rt="23" data-rpm="133" data-err="1.1">
+                    <i class="fa fa-tasks"></i>
+                    <p>Redis</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

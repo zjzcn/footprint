@@ -1,0 +1,124 @@
+<div class="portlet-title page-content-title">
+    <div class="caption">
+        <i class="icon-share hide"></i>
+            <span class="caption-subject uppercase">
+            web慢请求详情追踪
+            </span>
+    </div>
+</div>
+
+<div class="portlet-body" ng-controller="SlowWebProcessCtrl" ng-init="init()">
+    <div class="portlet light bordered">
+        <div class="row"></br>
+            <div class="col-md-8 col-sm-8">
+                <ul style="list-style-type: none">
+                    <li>慢请求URL：{{uri}}</li>
+                    <li>所属应用：{{appName}}</li>
+                    <li>时间戳：{{timestamp | date: 'yyyy-MM-dd HH:mm:ss'}}</li>
+                    <li>所属host：{{agentName}}</li>
+                    <li>耗时：{{elapsedTime}}ms</li>
+                </ul>
+            </div>
+            <!--            <div class="col-md-4 col-sm-4" style="font-size: 16px; color: #158f76">
+                            <a><i class="fa fa-hand-o-left"></i></a>  共有N条追踪信息
+                            <a><i class="fa fa-hand-o-right"></i></a>
+                        </div>-->
+        </div>
+        <div class="portlet-body">
+            <div class="tabbable-custom">
+                <ul class="nav nav-tabs ">
+                    <li class="active"  href="#slowweb_brief" data-toggle="tab">
+                        <a>
+                            摘要
+                        </a>
+                    </li>
+                    <li href="#slowweb_detail" data-toggle="tab">
+                        <a>
+                            追踪详情
+                        </a>
+                    </li>
+                    <li href="#slowweb_sql" data-toggle="tab">
+                        <a>
+                            相关SQL
+                        </a>
+                    </li>
+                    <li href="#slowweb_para" data-toggle="tab">
+                        <a>
+                            请求参数
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="slowweb_brief" class="tab-pane active">
+                        <div style="width: 100%; height: 150px" echarts="options"></div>
+                        <p style="font-size: 16px">最慢组件</p>
+                        <table class="table table-striped table-bordered table-hover datatable" id="">
+                            <thead>
+                            <tr>
+                                <th>名称</th>
+                                <th>调用次数</th>
+                                <th>执行时间（ms）</th>
+                                <th>时间百分比</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in webTraceList">
+                                <td>{{item.className}}:{{item.methodName}}</td>
+                                <td>{{item.invokeCount}}</td>
+                                <td>{{item.invokeTime}}</td>
+                                <td>{{item.timeRate}}%</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="slowweb_detail" class="tab-pane">
+                        <img src="images/temp/tracedetail.png" />
+                    </div>
+                    <div id="slowweb_sql" class="tab-pane">
+                        文本
+                        <!--<table class="table table-striped table-bordered table-hover datatable" id="">
+                            <thead>
+                            <tr>
+                                <th>SQL操作</th>
+                                <th>调用次数</th>
+                                <th>总耗时（s）</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>aaa</td>
+                                <td>1</td>
+                                <td>0.001</td>
+                            </tr>
+                            <tr>
+                                <td>bbb</td>
+                                <td>1</td>
+                                <td>0.001</td>
+                            </tr>
+                            </tbody>
+                        </table>-->
+                    </div>
+                    <div id="slowweb_para" class="tab-pane">
+                        <p style="font-size: 16px">请求参数</p>
+                        <ul style="list-style-type: none">
+                            <li>httpResponseCode：200</li>
+                            <li>jvm.thread_name：http-nio-8080-exec-32929</li>
+                        </ul>
+                        <p style="font-size: 16px">自定义参数</p>
+                        <ul style="list-style-type: none">
+                            <li> request.parameters.type：2</li>
+                        </ul>
+                        <p style="font-size: 16px">请求信息</p>
+                        <ul style="list-style-type: none">
+                            <li>请求URL：/java_demo/weather/plan.json</li>
+                            <li>HTTP响应：200</li>
+                            <li>referer：</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

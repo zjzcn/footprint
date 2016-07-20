@@ -1,0 +1,14 @@
+/footprint-client/.settings
+/footprint-client/.project
+/footprint-client/.classpath
+.settings
+*.project
+*.classpath
+/footprint-server/.gitignore
+/footprint-server/.project
+/footprint-server/.externalToolBuilders
+/footprint-server/.settings
+/footprint-server/logs
+/footprint-server/target
+/footprint-server/.classpath
+/footprint-server/src/main/webapp/admin/*.rar

@@ -1,0 +1,30 @@
+{
+  "name": "vue-footprint",
+  "version": "1.0.0",
+  "description": "seed-project-by vue",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --watch",
+    "build": "webpack --progress --colors",
+    "start": "webpack-dev-server  --host 0.0.0.0 --hot --progress --colors"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^0.19.0",
+    "style-loader": "^0.12.4",
+    "vue-html-loader": "^1.0.0",
+    "vue-loader": "^3.0.4",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.2",
+    "webpack-dev-server":"^1.12.1"
+  },
+  "dependencies": {
+    "vue": "^1.0.21",
+    "vue-router": "^0.7.13",
+    "vue-resource": "^0.7.0",
+    "vue-async-data": "^1.0.2",
+    "vue-validator": "^2.0.1",
+    "express": "^4.13.3"
+  }
+}

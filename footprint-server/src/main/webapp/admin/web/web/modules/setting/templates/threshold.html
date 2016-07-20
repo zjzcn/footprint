@@ -1,0 +1,98 @@
+<div ng-controller="ThresholdSettingCtrl">
+    <form class="form-horizontal" name="thresholdForm">
+<!--    <div class="portlet-title page-content-title">
+        <div class="caption">
+			<span class="caption-subject uppercase">
+				WEB服务设置
+			</span>
+        </div>
+    </div>-->
+        <!--    <div class="titleline"></div>
+            <div class="portlet-body">
+
+                    <table class="table table-bordered" style="width: 600px">
+                        <thead class="thead-bg">
+                        <tr>
+                            <th style="width: 205px">告警项</th>
+                            <th>警告阈值</th>
+                            <th>严重阈值</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th><i class="fa fa-question-circle" tool-tip tool-text="xxx"></i> Http连接数</th>
+                            <td class="warning"><input type="text" value="100" ng-model="formData.web_http1" /></td>
+                            <td class="danger"><input type="text" value="200" ng-model="formData.web_http2" /></td>
+                        </tr>
+                                    <tr>
+                                        <th><i class="fa fa-question-circle" tool-tip tool-text="xxx"></i> 平均响应时间</th>
+                                        <td class="warning"><input type="text" placeholder="100" />ms</td>
+                                        <td class="danger"><input type="text" placeholder="500" />ms</td>
+                                    </tr>
+                                    <tr>
+                                        <th><i class="fa fa-question-circle" tool-tip tool-text="xxx"></i> 错误率</th>
+                                        <td class="warning"><input type="text" placeholder="2" />%</td>
+                                        <td class="danger"><input type="text" placeholder="5" />%</td>
+                                    </tr>
+                                    <tr>
+                                        <th><i class="fa fa-question-circle" tool-tip tool-text="xxx"></i> 请求过程响应时间</th>
+                                        <td class="warning"><input type="text" placeholder="100" />ms</td>
+                                        <td class="danger"><input type="text" placeholder="300" />ms</td>
+                                    </tr>
+                        </tbody>
+                    </table>
+
+
+            </div>-->
+
+<!--    <div class="portlet-title page-content-title">
+        <div class="caption">
+			<span class="caption-subject uppercase">
+				APP服务设置
+			</span>
+        </div>
+    </div>
+    <div class="titleline"></div>-->
+    <div class="portlet-body">
+        <table class="table table-bordered" style="width: 600px">
+            <thead class="thead-bg">
+            <tr>
+                <th>告警项</th>
+                <th>警告阈值</th>
+                <th>严重阈值</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th><i class="fa fa-question-circle" tool-tip tool-text="xxx"></i> 请求过程响应时间</th>
+                <td class="warning"><input type="text" ng-model="formData.app_resp1" />ms</td>
+                <td class="danger"><input type="text" ng-model="formData.app_resp2" />ms</td>
+            </tr>
+            <tr>
+                <th><i class="fa fa-question-circle" tool-tip tool-text="xxx"></i> 错误率</th>
+                <td class="warning"><input type="text" ng-model="formData.error_rate1" />%</td>
+                <td class="danger"><input type="text" ng-model="formData.error_rate2" />%</td>
+            </tr>
+<!--            <tr>
+                <th><i class="fa fa-question-circle" tool-tip tool-text="xxx"></i> 数据源连接池使用率</th>
+                <td class="warning"><input type="text" value="50" ng-model="formData.app_data1" />%</td>
+                <td class="danger"><input type="text" value="80" ng-model="formData.app_data2" />%</td>
+            </tr>
+            <tr>
+                <th><i class="fa fa-question-circle" tool-tip tool-text="xxx"></i> webcontainer线程池使用率</th>
+                <td class="warning"><input type="text" value="20" ng-model="formData.app_thread1" />%</td>
+                <td class="danger"><input type="text" value="50" ng-model="formData.app_thread2" />%</td>
+            </tr>
+            <tr>
+                <th><i class="fa fa-question-circle" tool-tip tool-text="xxx"></i> GC CPU使用率</th>
+                <td class="warning"><input type="text" value="50" ng-model="formData.app_cpu1" />%</td>
+                <td class="danger"><input type="text" value="80" ng-model="formData.app_cpu2" />%</td>
+            </tr>-->
+            </tbody>
+        </table>
+    </div>
+    </form>
+    <div class="actions" style=" float: right">
+        <button class="btn btn-success" ng-click="save()"><i class="fa fa-check-square-o"></i> 保存</button>
+    </div>
+</div>

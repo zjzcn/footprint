@@ -1,0 +1,144 @@
+<div class="portlet-body" ng-controller="JVMsCtrl">
+    <div class="select-refresh-title">
+        <div class="title-left">
+            <select class="chosen-select" id="appKeySelect" system-select on-change="appKeyChange()">
+            </select>
+        </div>
+        <div class="title-left">
+            <i class="fa fa-long-arrow-right"></i>
+        </div>
+        <div class="title-left sub-chosen-select">
+            <select class="chosen-select" id="agentKeySelect" agent-select
+                    data="agentList" on-change="agentKeyChange()"
+                    agent-id="agentId" agent-Type="agentType">
+            </select>
+        </div>
+        <div class="title-right">
+            <div class="">
+                <div class="pull-right" id="dateRangePicker" date-range-picker on-change="dateRangeChange()">
+                </div>
+            </div>
+        </div>
+    </div></br>
+<!--    <table class="table" id="jvmsTable">
+        <thead>
+        <tr>
+            <th style="width: 200px">JVMs</th>
+            <th>响应时间(ms)</th>
+            <th>吞吐率(rpm)</th>
+            <th>错误率(%)</th>
+            <th>CPU使用率(%)</th>
+            <th>内存使用(MB)</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>-->
+    <div class="info-layout">
+        <div class="info-title">{{nodeSign}}</div>
+        <div class="info-content">
+            <div class="col-5">
+                <div class="info-wrap">
+                    <i class="fa fa-clock-o"></i>
+                    <p class="value">{{responseTime}}ms</p>
+                    <p>响应时间</p>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="info-wrap">
+                    <i class="fa fa-line-chart"></i>
+                    <p class="value">{{rpm}}rpm</p>
+                    <p>吞吐率</p>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="info-wrap">
+                    <i class="fa fa-bug"></i>
+                    <p class="value">{{errorRate}}%</p>
+                    <p>错误率</p>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="info-wrap">
+                    <i class="fa fa-pie-chart"></i>
+                    <p class="value">{{cpuUseRate}}%</p>
+                    <p>CPU使用率</p>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="info-wrap">
+                    <i class="fa fa-bar-chart"></i>
+                    <p class="value">{{memUse}}MB</p>
+                    <p>内存使用</p>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="tabbable-custom">
+        <ul class="nav nav-tabs">
+            <li ng-repeat="tab in tabs"
+                ng-class="{true:'active'}[tab==selectedTab]" ng-click="selectTab(tab)">
+                <a href="javascript:void(0)">{{tab.title}}</a>
+            </li>
+        </ul>
+        <div class="tab-pane padding-15">
+            <div class="row" ng-repeat="tab in tabs" ng-if="tab==selectedTab">
+                <div class="col-md-6 col-sm-6" ng-if="tab.title == '内存使用量'" ng-repeat="chart in tab.charts">
+                    <div class="portlet light echart" add-dashboard>
+                        <div class="portlet-title">
+                            <div class="caption font-green-sharp">
+                                <i class="fa fa-question-circle" tool-tip tool-text="{{chart.tip}}"></i><span>{{chart.name}}</span>
+                            </div>
+                            <div class="actions">
+                                <!--<a href="javascript:;" class="btn btn-circle btn-icon-only btn-default dashboardBtn" tool-tip tool-type="addDashboard" ng-click="addDashboard()"> <i class="fa fa-plus"></i>
+                                </a>-->
+                                <a class="btn btn-circle btn-icon-only btn-default fullscreen" tool-tip tool-type="fullScreen"> </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="charts" echarts="chart.data"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6" ng-if="tab.title == '线程'" ng-repeat="chart in tab.charts">
+                    <div class="portlet light echart" add-dashboard>
+                        <div class="portlet-title">
+                            <div class="caption font-green-sharp">
+                                <i class="fa fa-question-circle" tool-tip tool-text="{{chart.tip}}"></i><span>{{chart.name}}</span>
+                            </div>
+                            <div class="actions">
+                                <!--<a href="javascript:;" class="btn btn-circle btn-icon-only btn-default dashboardBtn" tool-tip tool-type="addDashboard" ng-click="addDashboard()"> <i class="fa fa-plus"></i>
+                                </a>-->
+                                <a class="btn btn-circle btn-icon-only btn-default fullscreen" tool-tip tool-type="fullScreen"> </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="charts" echarts="chart.data"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6" ng-if="tab.title == 'GC'" ng-repeat="chart in tab.charts">
+                    <div class="portlet light echart" add-dashboard>
+                        <div class="portlet-title">
+                            <div class="caption font-green-sharp">
+                                <i class="fa fa-question-circle" tool-tip tool-text="{{chart.tip}}"></i><span>{{chart.name}}</span>
+                            </div>
+                            <div class="actions">
+                                <!--<a href="javascript:;" class="btn btn-circle btn-icon-only btn-default dashboardBtn" tool-tip tool-type="addDashboard" ng-click="addDashboard()"> <i class="fa fa-plus"></i>
+                                </a>-->
+                                <a class="btn btn-circle btn-icon-only btn-default fullscreen" tool-tip tool-type="fullScreen"> </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="charts" echarts="chart.data"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

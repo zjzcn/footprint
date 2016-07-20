@@ -1,0 +1,549 @@
+<div class="page-sidebar navbar-collapse collapse">
+
+	<ul class="page-sidebar-menu page-sidebar-menu-hover-submenu1" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+		<li class="start active open">
+			<a href="javascript:;">
+				<i class="icon-home"></i>
+				<span class="title">总览</span>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;">
+			<i class="icon-basket"></i>
+			<span class="title">计算与网络</span>
+			<span class="arrow "></span>
+			</a>
+			<ul class="sub-menu">
+				<li>
+					<a href="javascript:;">
+						<i class="icon-home"></i> 主机
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<i class="icon-basket"></i> 映像
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<i class="icon-tag"></i> 私有网络
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<i class="icon-handbag"></i> 路由器
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<i class="icon-handbag"></i> 负载均衡器
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<i class="icon-handbag"></i> 公网IP
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<i class="icon-handbag"></i> 内网域名别名
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<i class="icon-rocket"></i>
+				<span class="title">存储</span>
+				<span class="arrow "></span>
+			</a>
+			<ul class="sub-menu">
+				<li>
+					<a href="javascript:;">
+						硬盘
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						Vistual SAN
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						备份
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<i class="icon-diamond"></i>
+				<span class="title">安全</span>
+				<span class="arrow "></span>
+			</a>
+			<ul class="sub-menu">
+				<li>
+					<a href="javascript:;">
+						防火墙
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						SSH秘钥
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<i class="icon-puzzle"></i>
+				<span class="title">数据库与缓存</span>
+				<span class="arrow "></span>
+			</a>
+			<ul class="sub-menu">
+				<li>
+					<a href="javascript:;">
+					关系型数据库</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+					缓存</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<i class="icon-puzzle"></i>
+				<span class="title">列队与集群服务</span>
+				<span class="arrow "></span>
+			</a>
+			<ul class="sub-menu">
+				<li>
+					<a href="javascript:;">
+					Zookeeper</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+					消息队列</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<i class="icon-settings"></i>
+				<span class="title">子账户</span>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;">
+				<i class="icon-briefcase"></i>
+				<span class="title">API秘钥</span>
+			</a>
+		</li>
+		<li class="last ">
+			<a href="javascript:;">
+				<i class="icon-wallet"></i>
+				<span class="title">通知列表</span>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="page-content-wrapper">
+	<div class="page-content">
+		<div class="page-content-wrap">
+			<div class="portlet-title page-content-title">
+				<div class="caption">
+					<i class="fa fa-list-alt"></i>
+					<span class="caption-subject uppercase">
+						最近事件一览
+					</span>
+				</div>	
+				<div class="actions">
+					<div class="btn-group">
+					</div>
+				</div>				
+			</div>
+
+
+			<div class="demo-wrap">
+				<h4>选择客户端和刷新时间</h4>
+
+				<div class="select-refresh-title">
+					<div class="title-left">							
+			          <select data-placeholder="" class="chosen-select" id="selectApp">         
+			            <option value="1" selected>苏宁易购客户端_iPad</option>
+			            <option value="2">豆芽客户端_IOS</option>
+			            <option value="3">豆芽客户端_Android</option>
+			            <option value="4">豆芽客户端_PC</option>         
+			            <option value="5">苏宁易购客户端_iPad</option>
+			            <option value="6">豆芽客户端_IOS</option>
+			            <option value="7">豆芽客户端_Android</option>
+			            <option value="8">豆芽客户端_PC</option>         
+			            <option value="9">苏宁易购客户端_iPad</option>
+			            <option value="10">豆芽客户端_IOS</option>
+			            <option value="11">豆芽客户端_Android</option>
+			            <option value="12">豆芽客户端_PC</option>
+			          </select>
+					</div>
+					<div class="title-right">
+						<div class="btn-group">
+							<div id="defaultrange" class="pull-right">
+			                	<i class="fa fa-calendar"></i>
+			                  	<span>最近30分钟</span> <b class="caret"></b>
+			                </div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="demo-wrap">
+				<h4>按钮</h4>
+				<div class="row">
+					<div class="col-md-3">
+						<button class="btn btn-default">default</button>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-success">success</button>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-primary">primary</button>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-warning">warning</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="demo-wrap">
+				<h4>表单</h4>
+				<form class="form-horizontal">
+				  <div class="form-group">
+				    <label for="inputEmail3" class="col-md-2 control-label">邮箱</label>
+				    <div class="col-md-10">
+				      <input type="email" class="form-control" id="inputEmail3" placeholder="邮箱">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputPassword3" class="col-md-2 control-label">密码</label>
+				    <div class="col-md-10">
+				      <input type="password" class="form-control" id="inputPassword3" placeholder="密码">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="input3" class="col-md-2 control-label">下拉框</label>
+				    <div class="col-md-10">
+						<select class="form-control">
+						  	<option>1</option>
+						  	<option>2</option>
+						  	<option>3</option>
+						  	<option>4</option>
+						  	<option>5</option>
+						</select>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="input4" class="col-md-2 control-label">多行文本框</label>
+				    <div class="col-md-10">
+				    	<textarea class="form-control"></textarea>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="input4" class="col-md-2 control-label">多选框</label>
+				    <div class="col-md-10">
+				    	<label class="checkbox-inline">
+							<input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+						</label>
+						<label class="checkbox-inline">
+							  <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+						</label>
+						<label class="checkbox-inline">
+							  <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+						</label>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="input4" class="col-md-2 control-label">单选框</label>
+				    <div class="col-md-10">
+				    	<label class="radio-inline">
+						  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+						</label>
+						<label class="radio-inline">
+						  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+						</label>
+						<label class="radio-inline">
+						  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+						</label>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <div class="col-md-offset-2 col-md-10">
+				      <div class="checkbox">
+				        <label>
+				        	<input type="checkbox"> 记住我
+				        </label>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <div class="col-md-offset-2 col-md-10">
+				      <button type="submit" class="btn btn-success">注册</button>
+				    </div>
+				  </div>
+				</form>
+			</div>
+
+
+			<div class="demo-wrap">
+				<h4>tab页</h4>
+				<div class="tabbable-custom">
+					<ul class="nav nav-tabs ">
+						<li class="">
+							<a href="#tab_1" data-toggle="tab" aria-expanded="false">
+								所有
+							</a>
+						</li>
+						<li class="">
+							<a href="#tab_2" data-toggle="tab" aria-expanded="false">
+								警告
+							</a>
+						</li>
+						<li class="active">
+							<a href="#tab_3" data-toggle="tab" aria-expanded="true">
+								严重问题
+							</a>
+						</li>
+						<li class="">
+							<a href="#tab_4" data-toggle="tab" aria-expanded="true">
+								报警通知
+							</a>
+						</li>
+						<li class="">
+							<a href="#tab_5" data-toggle="tab" aria-expanded="true">
+								配置更改
+							</a>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane" id="tab_1">
+							<p>
+								 暂无事件！
+							</p>
+						</div>
+						<div class="tab-pane" id="tab_2">
+							<p>
+								 暂无警告事件！
+							</p>
+						</div>
+						<div class="tab-pane active" id="tab_3">
+							<p>
+								暂无严重问题事件！
+							</p>
+						</div>
+						<div class="tab-pane" id="tab_4">
+							<p>
+								暂无报警通知事件！
+							</p>
+						</div>
+						<div class="tab-pane" id="tab_5">
+							<p>
+								暂无配置更改事件！
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="demo-wrap">
+				<h4>提示框</h4>
+				
+				<div class="row">
+					<div class="col-md-3">
+						<button class="btn btn-success" id="successBtn">成功</button>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-info" id="infoBtn">提示</button>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-warning" id="warningBtn">警告</button>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-danger" id="errorBtn">错误</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="demo-wrap">
+				<h4>tooltip和确认框</h4>
+				<p>
+					此处需要引入 jBox.min.js和jBox.css
+				</p>
+				<div class="row">
+					<div class="col-md-3">
+						<button class="btn btn-success tool-tip" data-tip="百度链接" data-url="http://www.baidu.com">tooltip含链接</button>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-info" id="dashboardBtn">添加到仪表盘</button>
+					</div>
+					<div class="col-md-3">
+						<button class="btn btn-warning" id="confirmBtn">确认</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="demo-wrap" id="loading">
+				<h4>loading的</h4>
+				<p>
+					此处需要引入 jquery.blockui.min.js
+				</p>
+				<div class="row">
+					<div class="col-md-2 col-md-offset-2">
+						<input type="button" class="btn btn-success" id="loadingSucc" value="加载完成时调用"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<div class="portlet portlet-sortable box red-sunglo">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="fa fa-gift"></i>charts02
+								</div>
+							</div>
+							<div class="portlet-body" style="min-height:200px;">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="demo-wrap">
+				<h4>charts</h4>
+
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<div class="portlet light">
+							<div class="portlet-title">
+								<div class="caption font-green-sharp">
+									<i class="fa fa-question-circle tool-tip" data-tip="图表一"></i>
+									<span class="caption-subject bold uppercase">图表一</span>
+								</div>
+								<div class="actions">
+									<a class="btn btn-circle btn-icon-only btn-default like" href="#" data-original-title="添加到我的仪表盘">
+										<i class="fa fa-heart"></i>
+									</a>
+									<a class="btn btn-circle btn-icon-only btn-default fullscreen" href="#" data-original-title="全屏" title="">
+									</a>
+								</div>
+							</div>
+							<div class="portlet-body" style="height: auto;">
+								<div id="main" style="width:100%;height:400px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- END PAGE CONTENT-->
+	</div>
+</div>
+
+
+<script>
+    jQuery(document).ready(function() {    
+       	Metronic.init(); 
+		Layout.init(); 
+		QuickSidebar.init(); 
+
+	    $("#selectApp").chosen({
+	      	no_results_text: "未查询到结果", 
+			search_contains: true,
+			disable_search_threshold: 10,
+			width: "200px"
+	    });
+	    
+	    $("#successBtn").on("click",function(){
+	    	UIToastr("success","操作成功","创建APP成功");
+	    })
+
+	    $("#infoBtn").on("click",function(){
+	    	UIToastr("info","操作提示","创建APP");
+	    })
+
+	    $("#warningBtn").on("click",function(){
+	    	UIToastr("warning","操作失败","请输入用户名");
+	    })
+
+		$("#errorBtn").on("click",function(){
+	    	UIToastr("error","操作失败","创建APP失败");
+	    })
+
+
+		//modal的使用 start
+    	var myModal = new jBox('Confirm',{
+    		id:"addDashboard",
+    		title:'添加自定义仪表盘',
+			content:'<div class="row form-horizontal"><div class="col-md-3"><label class="control-label">图表别名</label></div><div class="col-md-8"><input class="form-control" type="text" /></div></div>',
+			confirmButton:'立即添加',
+			cancelButton:'取消',
+			width:600,
+			addClass:'confirm-modal',
+			confirm:function(){
+				//todo
+			}
+		});
+	    $("#dashboardBtn").on("click",function(){
+			myModal.open();
+	    	$("#addDashboard").find("input.form-control").val("sddd");
+	    })
+	    //modal的使用 end
+
+	    //确认框的使用 start
+    	var confirmModal = new jBox('Confirm',{
+    		id:"confirmBox",
+			content:'你确认要删除这个DIV吗？',
+			confirmButton:'确认',
+			cancelButton:'取消',
+			addClass:'confirm-modal',
+			confirm:function(){
+				//todo
+			}
+		});
+	    $("#confirmBtn").on("click",function(){
+			confirmModal.open();
+	    })
+	    //确认框的使用 end
+
+	   	if($(".tool-tip").length > 0 ){
+			$(".tool-tip").each(function(i){
+				var tip = "",
+					url = "javascript:;";
+				if($(this).data("tip")){tip = $(this).data("tip");} 
+				if($(this).data("url")){url = $(this).data("url");} 						
+				new jBox('Tooltip',{
+					id:'jBox_'+i,
+					attach:$(this),
+					zIndex:8000,
+					maxWidth:300,
+					closeOnMouseleave:true,
+					position:{x:'center',y:'bottom'},
+					animation:'zoomIn',
+					content:'<a href="'+url+'">'+tip+'</a>'
+				});
+			})			
+		}
+
+		$("#loading .portlet").each(function(){
+			var el = $(this).children(".portlet-body");
+			Metronic.blockUI({
+                target: el,
+                animate: true,
+                overlayColor: 'none'
+            });
+		})
+
+		$("#loadingSucc").on("click",function(){
+			el = $("#loading .portlet-body");
+			Metronic.unblockUI(el);
+			el.find("img").fadeIn();
+		})
+
+    });
+</script>

@@ -1,0 +1,229 @@
+<div class="mg-top-20">
+    <div class="page-content">
+        <div class="portlet tasks-widget page-content-wrap" ng-controller="CreateAppCtrl">
+            <div class="portlet-title page-content-title">
+                <div class="caption">
+                    <span class="caption-subject uppercase">新建应用
+                    </span>
+                </div>
+                <div class="actions">
+                    <a class="btn btn-default btn-sm" ui-sref="OverView.Main" id="back-to-mysys">返回</a>
+                </div>
+            </div>
+            <div class="titleline"></div>
+
+            <div class="portlet-body">
+                <div class="col-md-12 col-sm-12">
+<!--                    <div class="row margin-bottom-40 front-steps-wrapper front-steps-count-3">
+                        <div class="col-md-4 col-sm-4 front-step-col active" id="stepWizard1">
+                            <div class="front-step front-step1">
+                                <h2>填写基本信息</h2>
+                                <p>请填写新建系统的基本信息</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 front-step-col" id="stepWizard2">
+                            <div class="front-step front-step2">
+                                <h2>下载安装探针</h2>
+                                <p>探针部署到待监测的系统中</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 front-step-col" id="stepWizard3">
+                            <div class="front-step front-step3">
+                                <h2>完成</h2>
+                                <p>完成创建</p>
+                            </div>
+                        </div>
+                    </div>-->
+                    </br>
+<!--                    <div style="float: right">
+                        <i class="fa fa-download"></i> <a href="">下载Java探针安装文档</a>
+                    </div>-->
+<!--                            <span>Licence Key
+                            <i class="fa fa-question-circle data-tool-tip"
+                               data-tip="Licence Key作为区别用户的唯一标识。Java语言Licence Key已打包在探针中，不需要用户输入；php语言和.net语言Licence Key请按照部署教程步骤提示录入。"></i> ：</span>
+                    <span>88733e1490db12a8efa4fd65b3da441a</span>
+                    <span><a class="btn btn-success btn-sm">复制</a></span>-->
+                    <div class="wizard-content">
+                        <div class="wizard-pane" data-link="#stepWizard1">
+                            <div class="wizard-body">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">系统名称</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="sysName" maxlength="32" placeholder="请使用字母数字和中文，最长32个字符，请不要使用重复的App名称。">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">选择安装的语言包</label>
+                                        <div class="col-md-8">
+                                            <label class="radio-inline">
+                                                <input type="radio" value="Java" name="language">Java
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center wizard-footer">
+                                <a ui-sref="CreateApp2" class="btn btn-success back-btn">完成</a>
+                            </div>
+                        </div>
+<!--                        <div class="wizard-pane" data-link="#stepWizard2">
+                            <div class="wizard-body">
+                            <div class="tabbable-custom">
+                            <ul class="nav nav-tabs ">
+&lt;!&ndash;                                <li class="active" href="#auto" data-toggle="tab" aria-expanded="false">
+                                    <a>自动安装</a>
+                                </li>&ndash;&gt;
+                                <li class="" href="#diy" data-toggle="tab" aria-expanded="false">
+                                    <a>手动安装</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+&lt;!&ndash;                                <div class="tab-pane active" id="auto">
+                                    <div class="form-horizontal">
+                                        <p class="attention">注：java探针支持JBoss，GlassFish，Jetty和Tomcat</p>
+                                        <h4>一、选择你的系统环境</h4>
+
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <label class="radio-inline">
+                                                    <input type="radio" value="Linux" name="sysenv" ng-model="formData.sysenv" />Linux or Mac
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" value="Win" name="sysenv" ng-model="formData.sysenv"/>Windows
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <h4 ng-if="formData.sysenv == 'Linux'">二、Linux or Mac安装探针</h4>
+                                        <div class="form-group" ng-if="formData.sysenv == 'Linux'">
+                                            <div class="col-sm-12">
+                                                <p>1)解压缩安装文件包到你的应用服务器的根目录：</p>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="createapp_copybox">
+                                                    unzip tingyun-agent-java-lastest.zip -d /path/to/appserver/
+                                                </div>
+                                                <i class="fa fa-copy"></i>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <p class="attention">注：“/path/to/appserver”是示例路径，请用户根据自身不同的环境修改正确的目录。</p>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <p>2)在tingyun目录下执行自动安装程序：</p>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="createapp_copybox">
+                                                    cd /path/to/appserver/tingyun
+                                                </div>
+                                                <i class="fa fa-copy"></i>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="createapp_copybox">
+                                                    java -jar tingyun-agent-java.jar install
+                                                </div>
+                                                <i class="fa fa-copy"></i>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <h4>三、启动或者重新启动应用服务器</h4>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <p>1)应用服务器重新启动，云迹server探针监控才能生效。</p>
+                                                <p>2)5分钟后，当您的java应用服务有http请求进入，性能数据将发送到云迹Server</p>
+                                            </div>
+                                        </div>
+
+                                        <h4 ng-if="formData.sysenv == 'Win'">二、Windows安装探针</h4>
+                                        <div class="form-group" ng-if="formData.sysenv == 'Win'">
+                                            <div class="col-sm-12">
+                                                <p>1)打开 suning-agent-java.zip</p>
+                                                <p>2)拷贝suningyun目录到你的应用服务器的根目录</p>
+                                                <p>3)在命令行窗口执行：</p>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="createapp_copybox">
+                                                    要改！！cd tingyun
+                                                </div>
+                                                <i class="fa fa-copy"></i>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="createapp_copybox">
+                                                    要改！！java -jar tingyun-agent-java.jar install
+                                                </div>
+                                                <i class="fa fa-copy"></i>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <h4>三、启动或者重新启动应用服务器</h4>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <p>1)应用服务器重新启动，云迹server探针监控才能生效。</p>
+                                                <p>2)5分钟后，当您的java应用服务有http请求进入，性能数据将发送到云迹Server</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>&ndash;&gt;
+                                <div class="tab-pane active" id="diy">
+                                    <div class="form-horizontal">
+                                        <h4>一、手动安装</h4>
+                                        <div class="col-sm-12">
+                                            <p>1)解压缩安装文件包到你的应用服务器的根目录(推荐)或指定目录</p>
+                                            <p>2)备份tingyun目录下tingyun.properties文件</p>
+                                            <p>3)在应用服务器的启动脚本中增加：</p>
+                                            <div class="createapp_copybox">
+                                                改！！-javaagent:/path/to/tingyun/tingyun-agent-java.jar
+                                            </div>
+                                            <i class="fa fa-copy"></i>
+                                        </div>
+
+                                        <p class="attention">注：“/path/to/”是示例路径，请用户根据自身不同的环境修改正确的目录。</p>
+                                        <h4>二、启动或者重新启动应用服务器</h4>
+                                        <p>1)应用服务器重新启动，云迹server探针监控才能生效。</p>
+                                        <p>2)5分钟后，当您的java应用服务有http请求进入，性能数据将发送到云迹Server</p>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="text-center wizard-footer">
+                                <a class="btn btn-default back-btn">上一步</a>
+                                <a class="btn btn-success next-btn">下一步</a>
+                            </div>
+                        </div>
+                        <div class="wizard-pane" data-link="#stepWizard3">
+                            <div class="wizard-body">
+                                <h4><i class="fa fa-spinner"></i>
+                                    等待5分钟，听云Server收到您的应用程序性能数据后，您的应用程序将会展示在应用列表中。</h4>
+                                <div class="col-sm-12">
+                                    <p>如果在几分钟之内，你没有看到任何应用性能数据，也许你的安装有问题，可以按以下方式获得帮助：</p>
+                                    <p>1. 手动安装和执行部署脚本，并下载阅读《Java探针安装文档》</p>
+                                    <p>2. 技术支持xxxxxx@xxxxxx</p>
+                                </div>
+                            </div>
+                            <div class="text-center wizard-footer">
+                                <a class="btn btn-default back-btn">上一步</a>
+                                <a class="btn btn-success next-btn">返回应用列表</a>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+<!--                <div class="col-md-3 col-sm-3">
+                    <div class="explain">
+                        <h5>常见问题</h5>
+                        <p><a href="">Java升级日志</a></p>
+                        <p><a href="">Java安装说明</a></p>
+                        <p><a href="">安装Java探针后，在报表里看不到数据</a></p>
+                    </div>
+                    <div class="explain">
+                        <h5>需要帮助？</h5>
+                        <p><i class="fa fa-question-circle"></i> 去<a href="">帮助中心</a>看看</p>
+                        <p><i class="fa fa-envelope"></i> 发邮件给<a href="">帮助中心</a></p>
+                        <p><i class="fa fa-weibo"></i> 关注云迹官方<a href="">微博</a></p>
+                        <p><i class="fa fa-weixin"></i> 关注云迹官方<a href="">微信</a></p>
+                        <p><i class="fa fa-phone"></i> 拨打咨询电话<a href="">025-66996699</a></p>
+                        <p><i class="fa fa-comment"></i> 留下您的<a href="">反馈</a></p>
+                    </div>
+                </div>-->
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

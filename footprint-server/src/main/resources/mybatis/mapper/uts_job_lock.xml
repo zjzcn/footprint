@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.footprint.server.platform.uts.dao.JobLockDao">
+	<insert id="insert" parameterType="java.util.Map">
+	<![CDATA[
+		insert into UTS_JOB_LOCK(JOB_GROUP,JOB_NAME,LOCK_OWNER) values (#{jobGroup},#{jobName},#{lockOwner})
+	]]>
+	</insert>
+
+	<update id="lock" parameterType="java.util.Map">
+	<![CDATA[
+		update UTS_JOB_LOCK set LOCK_OWNER=#{lockOwner} 
+		where JOB_GROUP=#{jobGroup} and JOB_NAME=#{jobName} and LOCK_OWNER is null
+	]]>
+	</update>
+
+	<update id="unlockByOwner" parameterType="java.util.Map">
+ 	<![CDATA[
+        update UTS_JOB_LOCK set LOCK_OWNER=null where JOB_GROUP=#{jobGroup} and JOB_NAME=#{jobName}
+        and LOCK_OWNER = #{lockOwner}
+   	]]>
+	</update>
+
+	<update id="unlock" parameterType="java.util.Map">
+	<![CDATA[
+             update UTS_JOB_LOCK set LOCK_OWNER=null where JOB_GROUP=#{jobGroup} and JOB_NAME=#{jobName}
+    	   ]]>
+	</update>
+
+	<select id="getLockInfo" parameterType="java.util.Map" resultType="com.footprint.server.platform.uts.entity.JobLock">
+		<![CDATA[
+             select * from UTS_JOB_LOCK where JOB_GROUP=#{jobGroup} and JOB_NAME=#{jobName}
+    	   ]]>
+	</select>
+
+	<select id="getLockedJobs" parameterType="java.util.Map" resultType="java.lang.String">
+		<![CDATA[
+             select JOB_NAME from UTS_JOB_LOCK where JOB_GROUP=#{jobGroup} and LOCK_OWNER is not null
+    	   ]]>
+	</select>
+
+</mapper>

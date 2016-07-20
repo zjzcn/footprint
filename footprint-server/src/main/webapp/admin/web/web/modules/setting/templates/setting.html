@@ -1,0 +1,18 @@
+<aside ng-include="'modules/setting/templates/aside.html'"></aside>
+
+<div class="page-content-wrapper" ng-controller="SettingCtrl">
+    <div class="page-content">
+        <div class="portlet tasks-widget page-content-wrap">
+
+            <div class="select-refresh-title">
+                <div class="title-left">
+                    <select class="chosen-select" system-select on-change="appKeyChange()">
+                    </select>
+                </div>
+            </div>
+
+            <div class="detail-content fade-in-up" ui-view=""></div>
+            
+        </div>
+    </div>
+</div>

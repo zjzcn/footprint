@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.footprint.server.platform.uaa.dao.UserDao">
+
+	<insert id="insert" parameterType="com.footprint.server.platform.uaa.entity.User">
+        <![CDATA[
+             insert into 
+             uaa_user(name,username,password,gender,email,mobile, create_time,enabled) 
+             values(#{name},#{username},#{password},#{gender},#{email},#{mobile},#{createTime},#{enabled})
+    	   ]]>
+	</insert>
+	
+    <update id="update" parameterType="com.footprint.server.platform.uaa.entity.User">
+        <![CDATA[
+             update uaa_user 
+             set name=#{name},password=#{password},gender=#{gender},email=#{email},mobile=#{mobile}
+             where id=#{id}
+    	   ]]>
+    </update>
+    
+    <update id="delete">
+		<![CDATA[
+             update uaa_user 
+             set enabled=0
+             where id=#{id}
+    	   ]]>
+	</update>
+
+	<select id="getById" resultType="com.footprint.server.platform.uaa.entity.User">
+		<![CDATA[
+            select * from uaa_user
+			where id=#{id}
+    	   ]]>
+	</select>
+	
+	<select id="queryByUsername" resultType="com.footprint.server.platform.uaa.entity.User">
+		<![CDATA[
+            select * from uaa_user
+			where username=#{username}
+    	   ]]>
+	</select>
+</mapper>

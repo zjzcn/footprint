@@ -1,0 +1,37 @@
+<aside ng-include="'modules/portal/templates/side-menu.html'"></aside>
+
+<div class="page-content-wrapper">
+	<div class="page-content">
+		<div class="portlet tasks-widget page-content-wrap">
+
+			<div class="select-refresh-title" ng-controller="DetailController">
+				<div class="title-left">
+					<select data-placeholder="" class="chosen-select" id="selectApp">
+						<option value="1" selected>苏宁易购客户端_iPad</option>
+						<option value="2">豆芽客户端_IOS</option>
+						<option value="3">豆芽客户端_Android</option>
+						<option value="4">豆芽客户端_PC</option>
+						<option value="5">苏宁易购客户端_iPad</option>
+						<option value="6">豆芽客户端_IOS</option>
+						<option value="7">豆芽客户端_Android</option>
+						<option value="8">豆芽客户端_PC</option>
+						<option value="9">苏宁易购客户端_iPad</option>
+						<option value="10">豆芽客户端_IOS</option>
+						<option value="11">豆芽客户端_Android</option>
+						<option value="12">豆芽客户端_PC</option>
+					</select>
+				</div>
+				<div class="title-right">
+					<div class="">
+						<div id="defaultrange" class="pull-right">
+							<i class="fa fa-calendar"></i>
+							<span>最近30分钟</span> <b class="caret"></b>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="detail-content fade-in-up" ui-view=""></div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd"
+	default-lazy-init="true">
+
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/admin/login.do" />
+		<property name="unauthorizedUrl" value="/admin/unauthz.do" />
+		<property name="filters">    
+           <map>    
+               <entry key="wperm" value-ref="wpermFilter"/>  
+           </map>    
+       	</property> 
+		<property name="filterChainDefinitions">
+			<value>
+				/uaa/ = anon
+				/uaa/login.do = anon
+				/uaa/captcha.do = anon
+				/uts/** = anon
+				
+				/uaa/logout.do = authc
+				
+				/admin/** = wperm
+			</value>
+		</property>
+	</bean>
+
+ 	<bean id="wpermFilter" class="com.footprint.server.platform.uaa.shiro.WildcardPermissionsFilter"/> 
+ 	 
+	<bean id="shiroDbRealm" class="com.footprint.server.platform.uaa.shiro.ShiroDbRealm">
+		<property name="authorizationCacheName" value="authz" />
+	</bean>
+	
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="shiroDbRealm" />
+		<property name="cacheManager" ref="shiroCacheManager" />
+		<property name="sessionManager" ref="sessionManager" />
+	</bean>
+
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="staticMethod" value="org.apache.shiro.SecurityUtils.setSecurityManager" />
+		<property name="arguments" ref="securityManager" />
+	</bean>
+
+	<!-- shiroCacheManager -->
+	<bean id="shiroCacheManager" class="com.footprint.server.common.shiro.RedisCacheManager">
+	    <property name="redisClient" ref="redisClient" />
+	    <property name="keyPrefix" value="shiro_redis_cache" />
+	    <property name="expireMS" value="120000" />
+	</bean>
+
+	<!-- sessionManager -->
+	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+		<property name="globalSessionTimeout" value="1800000"/> 
+	    <property name="sessionDAO" ref="sessionDAO" />
+	    <property name="sessionIdCookie" ref="simpleCookie"/>
+	</bean>
+    
+	<bean id="simpleCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg index="0" value="JSESSIONID_COOKIE"/>
+        <property name="httpOnly" value="true"/>
+    </bean>
+    
+	<!-- redisSessionDAO -->
+	<bean id="sessionDAO" class="com.footprint.server.common.shiro.RedisSessionDAO">
+	    <property name="cacheManager" ref="shiroCacheManager" />
+	</bean>
+	
+	<!-- redis -->
+	<bean id="redisClient" class="com.footprint.server.common.utils.RedisClient">
+	    <constructor-arg value="localhost"/>
+	    <constructor-arg value="6379"/>
+	</bean>
+
+</beans>

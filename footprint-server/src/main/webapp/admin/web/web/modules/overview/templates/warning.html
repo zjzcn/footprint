@@ -1,0 +1,59 @@
+<div class="portlet-body" ng-controller="WarningCtrl" ng-init="init()">
+    <div class="select-refresh-title">
+        <div class="title-left">
+            <select class="chosen-select" system-select on-change="appKeyChange()"></select>
+        </div>
+    </div>
+    <div class="search-div form-horizontal">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="control-label pull-left">报警级别</label>
+                <div class="col-md-9">
+                    <select id="alarmType" name="alarmType" class="form-control">
+                        <option value="all">全部</option>
+                        <option value="warning">警告</option>
+                        <option value="severity">严重</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label pull-left">时间段</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" placeholder="请选择时间" id="sndateRangePicker" sndate-range-picker on-change="dateRangeChange()">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <input type="button" value="查询" class="btn btn-success" ng-click="search()">
+        </div>
+    </div>
+
+    <div class="portlet-body">
+        <table class="table" id="WarningTable">
+            <thead class="thead-bg">
+            <tr>
+                <th style="width: 150px">报警级别</th>
+                <th style="width: 350px">警报内容</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>持续时间</th>
+                <th>警报状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in warningList">
+                <td>{{item.alarmLevel | AlarmLevelFilter}}</td>
+                <td>{{item.alarmContent}}</td>
+                <td>{{item.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                <td>{{item.endTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                <td>{{item.duration}}分钟</td>
+                <td>{{item.alarmState | AlarmStateFilter}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <sn-pager style="float: right" ng-show="isShowPageIndex()" items-per-page="pageSize" total-items="totalDataCount" list-size="10"></sn-pager>
+        <div class="clearfix"></div>
+    </div>
+</div>

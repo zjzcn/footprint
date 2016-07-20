@@ -1,0 +1,36 @@
+<div class="modal fade in">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" ng-controller="TopologyDialogCtrl">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">{{title}}信息一览</h4>
+            </div>
+            <div class="modal-body">
+                <div class="select-refresh-title mb-10">
+                    <div class="title-left sub-chosen-select">
+                        <select class="chosen-select" agent-select 
+                            data="agentList"
+                            on-change="agentKeyChange()"
+                            agent-id="agentId">
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4" ng-repeat="echart in echarts">
+                        <div class="portlet light echart sm">
+                            <div class="portlet-title">
+                                <div class="caption font-green-sharp">
+                                    <i class="fa fa-question-circle" tool-tip="" tool-text="{{echart.tip}}"></i>
+                                    <span>{{echart.name}}</span>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <div class="charts xs" echarts="echart.data"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

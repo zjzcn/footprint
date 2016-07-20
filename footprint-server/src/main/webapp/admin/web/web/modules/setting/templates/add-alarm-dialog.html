@@ -1,0 +1,46 @@
+<div class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content" ng-controller="AddAlarmDialogCtrl">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">添加告警信息接收人</h4>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body">
+                    <form class="form-horizontal" name="addAlarmForm">
+                        <div class="form-group" ng-class="{true:'has-error'}[error.name]">
+                            <label class="col-sm-2 control-label"><span class="text-danger">*</span>姓名</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="name" class="form-control" ng-model="formData.name" required />
+                                <p class="initialism">{{}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{true:'has-error'}[error.phone]">
+                            <label class="col-sm-2 control-label">电话</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="phone" class="form-control" ng-model="formData.phone" maxlength="11">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{true:'has-error'}[error.email]">
+                            <label class="col-sm-2 control-label">邮件地址</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="email" class="form-control" ng-model="formData.email">
+                            </div>
+                        </div>
+ <!--                       <div class="form-group" ng-class="{true:'has-error'}[error.key]">
+                            <label class="col-sm-2 control-label"><span class="text-danger">*</span>所要接收告警信息的应用</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" name="app" rows="3" ng-model="formData.app" required></textarea>
+                                <p class="initialism"></p>
+                            </div>
+                        </div>-->
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-flat" ng-click="ok()">确定</button>
+                <button type="button" class="btn btn-default btn-flat" ng-click="cancel()">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
